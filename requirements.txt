@@ -1,0 +1,31 @@
+# built in python packages
+re
+math
+
+# python packages
+numpy
+pandas
+ipykernel
+
+# open ai
+openai
+openpyxl
+tqdm
+matplotlib
+
+# llama
+ollama
+huggingface_hub
+transformers
+torch
+torchvision
+
+# formatting
+black
+
+# testing
+pytest
+
+# metadata
+datetime
+psutil
