@@ -4,6 +4,7 @@ pandas
 ipykernel
 
 # llama
+ollama
 huggingface_hub
 transformers
 torch
