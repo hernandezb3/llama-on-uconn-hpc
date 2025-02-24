@@ -1,0 +1,68 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.pytest_cache/
+.coverage
+*.coveragerc
+*.hypothesis/
+.noseids
+nosetests.xml
+coverage.xml
+*.log
+*.pot
+*.pyc
+
+# Python egg-info
+*.egg-info/
+
+# Build directories
+/build/
+dist/
+*.egg
+
+# VSCode
+.vscode/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Jupyter specific
+.ipynb_checkpoints
+*.nbconvert.ipynb
+
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# dotenv
+.env
+.env.*
+
+# VS Code specific
+.history/
+
+# Python virtual environments
+.venv/
+
+# Setuptools-related
+*.pyegg
+MANIFEST
+*.mo
+*.po
+
+# Ignore secrets.py file
+secrets.py
+secrets.local.json
