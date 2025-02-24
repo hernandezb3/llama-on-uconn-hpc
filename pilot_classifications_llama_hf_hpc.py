@@ -19,12 +19,21 @@ checkpoint0 = datetime.now() # start runtime counter
 
 # llama models:
 # hugging face:
-model_id = "meta-llama/Llama-3.3-70B-Instruct" # hugging face
+#model_id = "meta-llama/Llama-3.3-70B-Instruct" # hugging face
 #model_id = "meta-llama/Llama-3.2-3B-Instruct" # hugging face
-#model_id = "meta-llama/Llama-3.2-1B-Instruct" # hugging face
+model_id = "meta-llama/Llama-3.2-1B-Instruct" # hugging face
 #model_id = "meta-llama/Llama-3.1-8B" # hugging face
 
-login(token = secrets.LLAMA_33_API_KEY)
+model_names = {"meta-llama/Llama-3.3-70B-Instruct": "llama3.3",
+               "meta-llama/Llama-3.2-1B-Instruct": "llama3.2_1b", 
+               "meta-llama/Llama-3.2-3B-Instruct": "llama3.2",
+               "meta-llama/Llama-3.1-8B": "llama3.1",
+               "llama3.3": "llama3.3",
+               "llama3.2": "llama3.2",
+               "llama3.2_1b": "llama3.2_1b",
+               "llama3.1": "llama3.1"}
+
+login(token = secrets.LLAMA_32_API_KEY)
 
 task = "text-generation"
 weights = {"torch_dtype": torch.bfloat16} # quantization = 16, 32, 64
@@ -50,9 +59,9 @@ for outcome in ALL_OUTCOMES:
     prompt_dict[outcome] = prompt
 
 # 2. determine how many survey responses to include
-SAMPLE_SIZE = 30
+SAMPLE_SIZE = 5
 #df = pd.read_excel("clean/gold_standard_recalls.xlsx") # for the hpc interactive job
-df = pd.read_excel(start.DATA_DIR + "gold_standard_recalls.xlsx")
+df = pd.read_excel(start.GOLD_STANDARD)
 empty_text = []
 for row in list(range(0, len(df["recall_texts"]))):
     if (type(df["recall_texts"][row])) == float:
@@ -93,14 +102,14 @@ cpu_usage = psutil.cpu_percent(total_runtime)
 ram_used = psutil.virtual_memory()[3]/1000000000 # in GB
 
 output = {"model": [model_id], "outcomes": [OUTCOMES], "cases per outcome": [SAMPLE_SIZE], "rmse": [rmse], "total runtime (min)": [total_runtime/60], "model_pull": [pull_model_runtime/60], "request": [request_runtime/60], "cpu ()": [cpu_usage], "ram (gb)": [ram_used]}
-output_csv = pd.DataFrame(output)
+output = pd.DataFrame(output)
 
 print(df)
 print(output)
 
 # write .xlsx
 path = start.OUTPUT_DIR
-filename = model_id + "_out" + str(len(OUTCOMES)) + "_n" + str(SAMPLE_SIZE) + ".csv"
+filename = model_names[model_id] + "_out" + str(len(OUTCOMES)) + "_n" + str(SAMPLE_SIZE) + ".csv"
 
 df.to_csv(path + "df_"+ filename, index = False)
-output_csv.to_csv(path + filename, index = False)
+output.to_csv(path + filename, index = False)
