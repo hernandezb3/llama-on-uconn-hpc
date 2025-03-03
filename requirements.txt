@@ -5,6 +5,7 @@ ipykernel
 
 # llama
 ollama
+langchain_ollama
 huggingface_hub
 transformers
 torch

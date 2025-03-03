@@ -17,8 +17,7 @@ from library import start, secrets, fit # take out oamm. to run whole file
 
 checkpoint0 = datetime.now() # start runtime counter
 
-# llama models:
-# hugging face:
+# llama models: hugging face
 #model_id = "meta-llama/Llama-3.3-70B-Instruct" # hugging face
 #model_id = "meta-llama/Llama-3.2-3B-Instruct" # hugging face
 model_id = "meta-llama/Llama-3.2-1B-Instruct" # hugging face
