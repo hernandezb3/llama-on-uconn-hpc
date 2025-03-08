@@ -17,8 +17,8 @@ from library import start, secrets, fit # take out oamm. to run whole file
 checkpoint0 = datetime.now() # start runtime counter
 
 # llama models: ollama
-#model_id = "llama3.3" # ollama: llama3.3
-model_id = "llama3.2" # ollama: llama3.2
+model_id = "llama3.3" # ollama: llama3.3
+#model_id = "llama3.2" # ollama: llama3.2
 #model_id = "llama3.2:1b" # ollama: llama3.2:1b
 
 model_names = {"meta-llama/Llama-3.3-70B-Instruct": "llama3.3",
@@ -105,12 +105,12 @@ output = pd.DataFrame(output)
 path = start.DATA_DIR + "/llama_testing/"
 filename = model_names[model_id] + "_out" + str(len(OUTCOMES)) + "_n" + str(SAMPLE_SIZE) + ".csv"
 
-print(output)
+print(df)
 print(output)
 
 # write .xlsx
 path = start.OUTPUT_DIR
 filename = model_names[model_id] + "_out" + str(len(OUTCOMES)) + "_n" + str(SAMPLE_SIZE) + ".csv"
 
-#df.to_csv(path + "df_"+ filename, index = False)
-#output.to_csv(path + filename, index = False)
+df.to_csv(path + "df_"+ filename, index = False)
+output.to_csv(path + filename, index = False)
