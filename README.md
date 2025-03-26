@@ -15,7 +15,7 @@ This README documents Approach #1 (above) and assumes the following:
 - HPC:
     - [UConn Storrs HPC Account](https://login.uconn.edu/cas/login?service=https%3A%2F%2Fhpc.uconn.edu%2Fwp-login.php%3Fprivacy%3D2%26redirect_to%3Dhttps%253A%252F%252Fhpc.uconn.edu%252Fstorrs%252Faccount-application%252F)
     - [FileZilla]() 
-    - [Cisco AnyConnect]((https://kb.uconn.edu/space/IKB/10907091023/Set+Up+Cisco+AnyConnect+VPN)) Virtual Private Network (VPN)
+    - [Cisco AnyConnect](https://kb.uconn.edu/space/IKB/10907091023/Set+Up+Cisco+AnyConnect+VPN) Virtual Private Network (VPN)
     - [XQuartz](https://www.xquartz.org) Secure SHell (SSH) Client and X-Server
     - [Docker Account](https://www.docker.com)
 
