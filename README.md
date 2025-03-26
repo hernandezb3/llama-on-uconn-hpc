@@ -1,25 +1,25 @@
-# Llama on UConn HPC
-This repository is for running a Llama model from a Python script in UConn's HPC environment. Two approaches are included:
+# Llama on UConn High Performance Computing (HPC)
+This repository (repo) is for running a Llama model from a Python script in UConn's HPC environment. Two approaches are included in the repo:
 
 1. Ollama downloaded with Apptainer
 2. Hugging Face
 
 ## Pre-Requisites
 This README documents Approach #1 (above) and assumes the following:
-- Mac Operating System (OS)
-- [VS Code](https://code.visualstudio.com) Interactive Development Environment (IDE)
-- UConn NetID and Password
-- UConn [HPC Account](https://login.uconn.edu/cas/login?service=https%3A%2F%2Fhpc.uconn.edu%2Fwp-login.php%3Fprivacy%3D2%26redirect_to%3Dhttps%253A%252F%252Fhpc.uconn.edu%252Fstorrs%252Faccount-application%252F)
-- [Cisco Duo](https://kb.uconn.edu/space/IKB/10789815076/Setting+up+a+Mobile+Phone+for+2FA) Two-Factor Authentication (2FA)
-- [Cisco AnyConnect]((https://kb.uconn.edu/space/IKB/10907091023/Set+Up+Cisco+AnyConnect+VPN)) Virtual Private Network (VPN)
-- [XQuartz](https://www.xquartz.org) Secure SHell (SSH) Client and X-Server
-- [Docker Account](https://www.docker.com)
+- Device:
+    - Mac Operating System (OS)
+    - [VS Code](https://code.visualstudio.com) Interactive Development Environment (IDE)
+- UConn Account:
+    - UConn NetID and Password
+    - [Cisco Duo](https://kb.uconn.edu/space/IKB/10789815076/Setting+up+a+Mobile+Phone+for+2FA) Two-Factor Authentication (2FA)
+- HPC:
+    - [UConn HPC Account](https://login.uconn.edu/cas/login?service=https%3A%2F%2Fhpc.uconn.edu%2Fwp-login.php%3Fprivacy%3D2%26redirect_to%3Dhttps%253A%252F%252Fhpc.uconn.edu%252Fstorrs%252Faccount-application%252F)
+    - [Cisco AnyConnect]((https://kb.uconn.edu/space/IKB/10907091023/Set+Up+Cisco+AnyConnect+VPN)) Virtual Private Network (VPN)
+    - [XQuartz](https://www.xquartz.org) Secure SHell (SSH) Client and X-Server
+    - [Docker Account](https://www.docker.com)
 
-
-
-## Using HPC
-Linux
-Required software: 
+## Connecting to UConn HPC
+To connect to UConn HPC 
 
 ### Log in to HPC
 From terminal run:
