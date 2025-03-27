@@ -26,21 +26,26 @@ This README assumes the following:
     - [FileZilla]() File Transfer Protocol (FTP)
     - [Docker Account](https://www.docker.com)
 
-## Connecting to UConn HPC
-This section summarizes UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide.
+## Connect to UConn HPC
+This section summarizes UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. Each section provides direction for how to install the pre-requisites. Each step (e.g., Step A) assumes the pre-requisites are met.
 
-### Connect to VPN
+### Connect to a VPN
 The Cisco AnyConnect VPN allows active staff, faculty, and students acess to the UConn network. Computers connected to UConn-Secure WiFi or an on-campus ethernet port do not need to use a VPN. To access the UConn network off campus, install Cisco AnyConnect and follow the set-up instructions [here](https://kb.uconn.edu/space/IKB/10907091023/Set+Up+Cisco+AnyConnect+VPN) (also linked in the pre-requisites section).
 
-Open the Cisco Secure Client application. You will be prompted to log in with your NetID and Password. 
+__Step A:__ Open the Cisco Secure Client application. You will be prompted to log in with your NetID and Password. 
 
 ### Enable Graphics Forwarding
-Displaying program graphics, like a plot or graph output, requires an X11 Window System to enable graphics forwarding. Graphics forwarding is how graphics are sent from a remote host (i.e., the HPC cluster) to the local client (i.e., your computer). [XQuartz](https://www.xquartz.org) is the X11 Window System for MacOS. The X11 Window System requirements will vary by OS and by computer. Some Windows users may need to install [VcXsrv] (https://sourceforge.net/projects/vcxsrv/) while Linux users don't need to install an X11 Window System. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
+Displaying program graphics, like a plot or graph output, requires an X11 Window System to enable graphics forwarding. Graphics forwarding is how graphics are sent from a remote host (i.e., the HPC cluster) to the local client (i.e., your computer). 
+
+[XQuartz](https://www.xquartz.org) is the X11 Window System for MacOS. The X11 Window System requirements will vary by OS and by computer. Some Windows users may need to install [VcXsrv] (https://sourceforge.net/projects/vcxsrv/) while Linux users don't need to install an X11 Window System. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
 ### Transfer Files
-FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred between your computer and HPC over the internet. The Python script and the files it references need to be transferred to HPC. Note that since the transfer occurs over the internet, 
+FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred between your computer and HPC over the internet. The Python script and the files it references need to be transferred to HPC. Note that since the transfer occurs over the internet, you need to be connected to the UConn network (see Connect to a VPN above). 
 
-Following the steps [here](https://kb.uconn.edu/space/SH/26033783688/File+Transfer), transfer these files to your HPC account: 
+Following the steps [here](https://kb.uconn.edu/space/SH/26033783688/File+Transfer) download FileZilla
+
+__Step B:__ Open FileZilla and click the Site Manager icon to connect to HPC
+__Step C:__ Transfer these files to your HPC account: 
 - classify_with_ollama.py
 - test_ollama.py
 - requirements.txt
@@ -55,7 +60,7 @@ Following the steps [here](https://kb.uconn.edu/space/SH/26033783688/File+Transf
 ### Login to HPC
 Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. MacOS and Linux OS users can login to HPC using the default Terminal application. For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol and has a different process for logging in. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
-To login to Storrs HPC from a MacOS computer, run the following in Terminal:
+__Step D:__ Login to Storrs HPC from a MacOS computer by running the following in Terminal:
 ```
 # login to hpc
 # replace netid with your personal NetID
@@ -68,9 +73,10 @@ Follow the prompts to enter your password and complete any 2FA authorization. Wh
 hostname
 ```
 
-
 ### Start an interactive job
 Meta recommends XX for running Llama 3.3
+
+__Step E:__ Request an interactive job by running the following in Terminal:
 ```
 # srun = requests an interactive job
 # -n = number of nodes (1)
