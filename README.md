@@ -12,7 +12,7 @@ Llama is a collection of open-source large language models (LLMs) developed by M
 Running these models can be resource intensive depending on the size of the model (i.e., number of parameters - 3B vs 70B) and the approach. Running the same sized model e.g., Llama 3.2 3B is faster using Ollama than Hugging Face.
 
 ## Pre-Requisites
- assumes the following:
+This README assumes the following:
 - Personal Device:
     - Mac Operating System (OS)
     - [VS Code](https://code.visualstudio.com) Interactive Development Environment (IDE)
