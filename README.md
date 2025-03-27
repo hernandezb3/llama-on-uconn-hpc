@@ -128,7 +128,7 @@ ollama serve
 exit
 ```
 
-# Log into the Node
+# Login to the Node
 In a new terminal window
 ```
 # replace login5 with the specific login node
