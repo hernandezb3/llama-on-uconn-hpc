@@ -69,7 +69,7 @@ For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Sto
 ssh -Y netid@hpc2.storrs.hpc.uconn.edu
 ```
 
-Follow the prompts to enter your password and complete any 2FA authorization. When successfully logged in you'll be assigned to a login node on HPC. 
+Follow the prompts to enter your password and complete any 2FA authentication. When successfully logged in you'll be assigned to a login node on HPC. 
 ```
 # check the node 
 # hostname should return your assigned login node e.g., login4
