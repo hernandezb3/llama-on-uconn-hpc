@@ -27,7 +27,7 @@ This README assumes the following:
     - [Docker Account](https://www.docker.com)
 
 ## Connect to UConn HPC
-This section summarizes UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. Each subsection provides direction for how to install the pre-requisites. Each step (e.g., *__Step A__) assumes the pre-requisites are met.
+This section summarizes UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. Each subsection provides direction for how to install the pre-requisites. Each step (e.g., __Step A__) assumes the pre-requisites are met.
 
 ### Connect to a VPN
 The Cisco AnyConnect VPN allows active staff, faculty, and students acess to the UConn network. Computers connected to UConn-Secure WiFi or an on-campus ethernet port do not need to use a VPN. To access the UConn network off campus, install Cisco AnyConnect and follow the set-up instructions [here](https://kb.uconn.edu/space/IKB/10907091023/Set+Up+Cisco+AnyConnect+VPN) (also linked in the pre-requisites section).
