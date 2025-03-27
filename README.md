@@ -1,11 +1,16 @@
 # Llama on UConn High Performance Computing (HPC)
-This repository (repo) is for running a Llama model from a Python script in UConn's HPC environment. Two approaches are included in the repo:
+This repository (repo) is for running Llama models from a Python script in UConn's HPC environment. Two approaches are included in the repo:
 
 1. Ollama downloaded with Apptainer
 2. Hugging Face
 
+## Summary
+This README documents how to use Approach #1 (above) to run a Python script which sends a prompt input and returns a response from a Llama model. Llama is a collection of open-source large language models (LLMs) developed by Meta (see more info [here](https://www.llama.com)). The two approaches included in the repo are for running the models locally and not using an API inference endpoint. Running the models locally is free and guarentees the inputs we send won't be used by Meta for retraining current models or developing future models. 
+
+Running these models can be resource intensive depending on the size of the model (i.e., number of parameters - 3B vs 70B) and the approach. Running the same sized model e.g., Llama 3.2 3B is faster using Ollama than Hugging Face.
+
 ## Pre-Requisites
-This README documents Approach #1 (above) and assumes the following:
+ assumes the following:
 - Personal Device:
     - Mac Operating System (OS)
     - [VS Code](https://code.visualstudio.com) Interactive Development Environment (IDE)
@@ -14,9 +19,9 @@ This README documents Approach #1 (above) and assumes the following:
     - [Cisco Duo](https://kb.uconn.edu/space/IKB/10789815076/Setting+up+a+Mobile+Phone+for+2FA) Two-Factor Authentication (2FA)
 - HPC:
     - [UConn Storrs HPC Account](https://login.uconn.edu/cas/login?service=https%3A%2F%2Fhpc.uconn.edu%2Fwp-login.php%3Fprivacy%3D2%26redirect_to%3Dhttps%253A%252F%252Fhpc.uconn.edu%252Fstorrs%252Faccount-application%252F)
-    - [FileZilla]() 
     - [Cisco AnyConnect](https://kb.uconn.edu/space/IKB/10907091023/Set+Up+Cisco+AnyConnect+VPN) Virtual Private Network (VPN)
-    - [XQuartz](https://www.xquartz.org) Secure SHell (SSH) Client and X-Server
+    - [XQuartz](https://www.xquartz.org) Secure SHell (SSH) Client and X11 Window System
+    - [FileZilla]() File Transfer Protocol (FTP)
     - [Docker Account](https://www.docker.com)
 
 ## Connecting to UConn HPC
@@ -30,8 +35,23 @@ Open the Cisco Secure Client application. You will be prompted to log in with yo
 ### Enable Graphics Forwarding
 Displaying program graphics, like a plot or graph output, requires an X11 Window System to enable graphics forwarding. Graphics forwarding is how graphics are sent from a remote host (i.e., the HPC cluster) to the local client (i.e., your computer). [XQuartz](https://www.xquartz.org) is the X11 Window System for MacOS. The X11 Window System requirements will vary by OS and by computer. Some Windows users may need to install [VcXsrv] (https://sourceforge.net/projects/vcxsrv/) while Linux users don't need to install an X11 Window System. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
+### Transfer Files
+FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred between your computer and HPC over the internet. The Python script and the files it references need to be transferred to HPC. Note that since the transfer occurs over the internet, 
+
+Following the steps [here](https://kb.uconn.edu/space/SH/26033783688/File+Transfer), transfer these files to your HPC account: 
+- classify_with_ollama.py
+- test_ollama.py
+- requirements.txt
+- library
+    - fit.py
+    - secrets.py
+    - start.py
+- data
+    - test_prompt.csv
+    - test_data.csv
+
 ### Login to HPC
-Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. MacOS and Linux OS users can login to HPC using the default Terminal application. For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
+Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. MacOS and Linux OS users can login to HPC using the default Terminal application. For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol and has a different process for logging in. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
 To login to Storrs HPC from a MacOS computer, run the following in Terminal:
 ```
