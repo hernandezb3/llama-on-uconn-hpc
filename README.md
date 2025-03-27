@@ -32,7 +32,7 @@ This section summarizes UConn Storrs HPC's [Getting Started](https://kb.uconn.ed
 ### Connect to a VPN
 The Cisco AnyConnect VPN allows active staff, faculty, and students acess to the UConn network. Computers connected to UConn-Secure WiFi or an on-campus ethernet port do not need to use a VPN. To access the UConn network off campus, install Cisco AnyConnect and follow the set-up instructions [here](https://kb.uconn.edu/space/IKB/10907091023/Set+Up+Cisco+AnyConnect+VPN) (also linked in the pre-requisites section).
 
-*__Step A:__ Open the Cisco Secure Client application. You will be prompted to log in with your NetID and Password. 
+* __Step A:__ Open the Cisco Secure Client application. You will be prompted to log in with your NetID and Password. 
 
 ### Enable Graphics Forwarding
 Displaying program graphics, like a plot or graph output, requires an X11 Window System to enable graphics forwarding. Graphics forwarding is how graphics are sent from a remote host (i.e., the HPC cluster) to the local client (i.e., your computer). 
