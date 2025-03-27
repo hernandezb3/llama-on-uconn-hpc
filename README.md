@@ -1,8 +1,8 @@
 # Llama on UConn High Performance Computing (HPC)
 This repository (repo) is for running Llama models from a Python script in UConn's HPC environment. Two approaches are included in the repo:
 
-1. Ollama downloaded with Apptainer
-2. Hugging Face
+1. Ollama downloaded with Apptainer (classify_with_ollama.py)
+2. Hugging Face (classify_with_hugging_face.py)
 
 ## Summary
 This README documents how to use Approach #1 (above) to run a Python script which sends a prompt input and returns a response from a Llama model. Llama is a collection of open-source large language models (LLMs) developed by Meta (see more info [here](https://www.llama.com)). The two approaches included in the repo are for running the models locally and not using an API inference endpoint. Running the models locally is free and guarentees the inputs we send won't be used by Meta for retraining current models or developing future models. 
