@@ -39,30 +39,12 @@ Displaying program graphics, like a plot or graph output, requires an X11 Window
 
 [XQuartz](https://www.xquartz.org) is the X11 Window System for MacOS. The X11 Window System requirements will vary by OS and by computer. Some Windows users may need to install [VcXsrv] (https://sourceforge.net/projects/vcxsrv/) while Linux users don't need to install an X11 Window System. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
-### Transfer Files
-FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred between your computer and HPC over the internet. The Python script and the files it references need to be transferred to HPC. Note that since the transfer occurs over the internet, you need to be connected to the UConn network (see Connect to a VPN above). 
-
-Following the steps [here](https://kb.uconn.edu/space/SH/26033783688/File+Transfer) download FileZilla
-
-* __Step B:__ Open FileZilla and click the Site Manager icon to connect to HPC
-* __Step C:__ Transfer these files to your HPC account: 
-    - classify_with_ollama.py
-    - test_ollama.py
-    - requirements.txt
-    - library
-        - fit.py
-        - secrets.py
-        - start.py
-    - data
-        - test_prompt.csv
-        - test_data.csv
-
 ### Login to HPC
 Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. MacOS and Linux OS users can login to HPC using the default Terminal application. 
 
 For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol and has a different process for logging in. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
-* __Step D:__ Login to Storrs HPC from a MacOS computer by running the following in Terminal:
+* __Step B:__ Login to Storrs HPC from a MacOS computer by running the following in Terminal:
 ```
 # login to hpc
 # replace netid with your personal NetID
@@ -76,6 +58,28 @@ Follow the prompts to enter your password and complete any 2FA authentication. W
 hostname
 ```
 
+### Transfer Files
+FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred between your computer and HPC over the internet. The Python script and the files it references need to be transferred to HPC. Note that since the transfer occurs over the internet, you need to be connected to the UConn network (see Connect to a VPN above). 
+
+Following the steps [here](https://kb.uconn.edu/space/SH/26033783688/File+Transfer) download FileZilla
+
+* __Step C:__ Open FileZilla and click the Site Manager icon to connect to HPC
+* __Step D:__ Transfer these files to your HPC account: 
+    - classify_with_ollama.py
+    - test_ollama.py
+    - requirements.txt
+    - library
+        - fit.py
+        - secrets.py
+        - start.py
+    - data
+        - test_prompt.csv
+        - test_data.csv
+
+
+```
+# check files loaded successfully
+```
 ### Start an interactive job
 Meta recommends XX for running Llama 3.3
 
