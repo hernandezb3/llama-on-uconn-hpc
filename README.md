@@ -60,7 +60,7 @@ Following the steps [here](https://kb.uconn.edu/space/SH/26033783688/File+Transf
 ### Login to HPC
 Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. MacOS and Linux OS users can login to HPC using the default Terminal application. For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol and has a different process for logging in. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
-__Step D:__ Login to Storrs HPC from a MacOS computer by running the following in Terminal:
+* __Step D:__ Login to Storrs HPC from a MacOS computer by running the following in Terminal:
 ```
 # login to hpc
 # replace netid with your personal NetID
@@ -76,7 +76,7 @@ hostname
 ### Start an interactive job
 Meta recommends XX for running Llama 3.3
 
-__Step E:__ Request an interactive job by running the following in Terminal:
+* __Step E:__ Request an interactive job by running the following in Terminal:
 ```
 # srun = requests an interactive job
 # -n = number of nodes (1)
