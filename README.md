@@ -58,7 +58,9 @@ Following the steps [here](https://kb.uconn.edu/space/SH/26033783688/File+Transf
         - test_data.csv
 
 ### Login to HPC
-Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. MacOS and Linux OS users can login to HPC using the default Terminal application. For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol and has a different process for logging in. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
+Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. MacOS and Linux OS users can login to HPC using the default Terminal application. 
+
+For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol and has a different process for logging in. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
 * __Step D:__ Login to Storrs HPC from a MacOS computer by running the following in Terminal:
 ```
@@ -69,7 +71,8 @@ ssh -Y netid@hpc2.storrs.hpc.uconn.edu
 
 Follow the prompts to enter your password and complete any 2FA authorization. When successfully logged in you'll be assigned to a login node on HPC. 
 ```
-# check the node e.g., login
+# check the node 
+# hostname should return your assigned login node e.g., login4
 hostname
 ```
 
