@@ -44,18 +44,18 @@ FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred bet
 
 Following the steps [here](https://kb.uconn.edu/space/SH/26033783688/File+Transfer) download FileZilla
 
-__Step B:__ Open FileZilla and click the Site Manager icon to connect to HPC
-__Step C:__ Transfer these files to your HPC account: 
-- classify_with_ollama.py
-- test_ollama.py
-- requirements.txt
-- library
-    - fit.py
-    - secrets.py
-    - start.py
-- data
-    - test_prompt.csv
-    - test_data.csv
+* __Step B:__ Open FileZilla and click the Site Manager icon to connect to HPC
+* __Step C:__ Transfer these files to your HPC account: 
+    - classify_with_ollama.py
+    - test_ollama.py
+    - requirements.txt
+    - library
+        - fit.py
+        - secrets.py
+        - start.py
+    - data
+        - test_prompt.csv
+        - test_data.csv
 
 ### Login to HPC
 Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. MacOS and Linux OS users can login to HPC using the default Terminal application. For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol and has a different process for logging in. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
