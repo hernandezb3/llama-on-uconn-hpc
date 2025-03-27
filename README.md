@@ -7,7 +7,7 @@ This repository (repo) is for running Llama models from a Python script in UConn
 ## Summary
 This README documents how to use Approach #1 (above) to run a Python script which sends a prompt input and returns a response from a Llama model. 
 
-Llama is a collection of open-source large language models (LLMs) developed by Meta (see more info [here](https://www.llama.com)). The two approaches included in the repo are for running the models locally and not using an API inference endpoint. Running the models locally is free and guarentees the inputs we send won't be used by Meta for retraining current models or developing future models. 
+Llama is a collection of open-source large language models (LLMs) developed by Meta (see more [here](https://www.llama.com)). The two approaches included in the repo are for running the models locally instead of using an API inference endpoint. Running the models locally is free and guarentees the inputs sent to the model updwon't be used by Meta for retraining current models or developing future models. 
 
 Running these models can be resource intensive depending on the size of the model (i.e., number of parameters - 3B vs 70B) and the approach. Running the same sized model e.g., Llama 3.2 3B is faster using Ollama than Hugging Face.
 
