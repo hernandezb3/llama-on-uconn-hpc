@@ -61,7 +61,7 @@ hostname
 ### Transfer Files
 FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred between your computer and HPC over the internet. The Python script and the files it references need to be transferred to HPC. Note that since the transfer occurs over the internet, you need to be connected to the UConn network (see Connect to a VPN above). 
 
-Following the steps [here](https://kb.uconn.edu/space/SH/26033783688/File+Transfer) download FileZilla
+To install and connect FileZilla to your HPC account, follow he steps from UConn Storrs HPC's [File Tranfer](https://kb.uconn.edu/space/SH/26033783688/File+Transfer) document, part of their Data Storage Guide.
 
 * __Step C:__ Open FileZilla and click the Site Manager icon to connect to HPC
 * __Step D:__ Transfer these files to your HPC account: 
