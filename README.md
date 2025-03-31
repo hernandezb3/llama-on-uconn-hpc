@@ -1,4 +1,4 @@
-# Llama on UConn High Performance Computing (HPC)
+# Running Llama on UConn High Performance Computing (HPC)
 This repository (repo) is for running Llama models from a Python script in UConn's HPC environment. Two approaches are included in the repo:
 
 1. Ollama downloaded with Apptainer (classify_with_ollama.py)
@@ -79,9 +79,11 @@ To install and connect FileZilla to your HPC account, follow the steps from UCon
 
 ```
 # check files loaded successfully
+ls
 ```
 ### Start an interactive job
 Meta recommends XX for running Llama 3.3
+srun vs s
 
 * __Step E:__ Request an interactive job by running the following in Terminal:
 ```
@@ -102,7 +104,9 @@ module unload python
 module unload gcc
 module load apptainer
 ```
-### build the container 
+### Build the Container 
+Container is a running instance of an image. The image is the pre-built 
+Could have the same image running across multiple instances
 ```
 # build an apptainer container from the docker repository
 apptainer build --force --docker-login --sandbox ollama/ docker://ollama/ollama:latest
@@ -123,12 +127,9 @@ This shells into the container and
 ```
 apptainer shell instance://ollama_instance
 ollama serve
-
-# to leave the instance
-exit
 ```
 
-# Login to the Node
+## Login to the Node
 In a new terminal window
 ```
 # replace login5 with the specific login node
@@ -136,5 +137,13 @@ ssh -Y netid@login5.storrs.hpc.uconn.edu
 ```
 ### download the model
 ### run the script
+
+
+# Log out of instances
+
+```
+exit
+```
+
 
 README updated: March 26, 2025
