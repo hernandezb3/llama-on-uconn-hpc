@@ -65,4 +65,4 @@ MANIFEST
 
 # Ignore secrets.py file
 secrets.py
-secrets.local.json
+steps_A-O_secrets.sh

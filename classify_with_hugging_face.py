@@ -60,7 +60,7 @@ for outcome in ALL_OUTCOMES:
 # 2. determine how many survey responses to include
 SAMPLE_SIZE = 5
 #df = pd.read_excel("clean/gold_standard_recalls.xlsx") # for the hpc interactive job
-df = pd.read_excel(start.GOLD_STANDARD)
+df = pd.read_excel(start.CRISP)
 empty_text = []
 for row in list(range(0, len(df["recall_texts"]))):
     if (type(df["recall_texts"][row])) == float:
