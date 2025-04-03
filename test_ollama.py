@@ -10,10 +10,10 @@ print("langchain")
 from library import dictionary, start 
 print("library")
 
-model_id = "llama3.2" # ollama: llama3.2
-model_name = dictionary.model_names[model_id]
+model_id = "llama3.2:1b" # ollama: llama3.2
+#model_name = dictionary.model_names[model_id]
 ollama_server_url = "http://localhost:11434"
-llm = OllamaLLM(model = model_name, base_url = ollama_server_url)
+llm = OllamaLLM(model = model_id, base_url = ollama_server_url)
 print("llm settings")
 
 input = dictionary.demo_prompts["hello"]
