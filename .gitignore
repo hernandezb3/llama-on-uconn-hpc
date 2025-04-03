@@ -63,6 +63,9 @@ MANIFEST
 *.mo
 *.po
 
-# Ignore secrets.py file
+# Ignore files for personal use:
 secrets.py
-steps_A-O_secrets.sh
+dictionary_bah.py
+steps_A-O_bah.sh
+start_bah.py
+classify_with_ollama_bah.py

@@ -4,12 +4,14 @@
 # Step B: login to hpc
 # replace netid with your personal NetID
 ssh -Y netid@hpc2.storrs.hpc.uconn.edu
+hostname
 
 # Step D: check files loaded
 ls
 
 # Step E: start an interactive job (aka drop in)
-srun -n 1 -t 0:30:00 --mem=8G --pty bash
+srun -n 1 -t 0:30:00 --mem=16G --pty bash
+hostname
 
 # Step F: load modules
 # remove incompatible packages
@@ -35,10 +37,13 @@ ollama serve
 # objective = download the model and run the script
 
 # Step J: login to hpc
+# this is output of hostname in Step B
 ssh -Y netid@hpc2.storrs.hpc.uconn.edu # replace hpc2 with the login node from window 1 e.g., bah17005@login5.storrs.hpc.uconn.edu
 
 # Step K: ssh into the running session
-ssh job_node # replace job_node with the session id
+
+# this is output of hostname in Step E
+ssh node # replace node with the session id
 
 # Step L: load modules
 # remove incompatible packages
@@ -49,15 +54,23 @@ module load apptainer
 module load python/3.12.2
 
 # Step M: download the model
+# apptainer = application
+# shell = enter the container
+# instance://ollama_instance = name of the instance to shell into
 apptainer shell instance://ollama_instance
-ollama list # check which models have been pulled
+# see which model's have been downloaded to the container
+ollama list
+# pull the Llama 3.2 model (by default this pulls the 3B param model)
 ollama pull llama3.2 # pull a new model
+
+# leave the Ollama container shell
+exit
 
 # Step N: install python packages
 pip3 install -r requirements.txt
 
 # Step O: run the script
-python3 pilot_classifications_llama_ollama_hpc.py
+python3 classify_with_ollama.py
 
 
 

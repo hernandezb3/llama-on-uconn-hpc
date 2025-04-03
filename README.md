@@ -88,7 +88,7 @@ ls
 ### Start an Interactive Job
 There are two ways to request resources from UConn Storrs HPC, an interactive job (srun) or a scheduled job (sbatch). For more information, see Step 5 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. Sites like [apx.com](https://apxml.com/posts/ultimate-system-requirements-llama-3-models) and [nodeshift.com](https://nodeshift.com/blog/how-to-install-llama-3-3-70b-instruct-locally) can be used to determine what resources to request from HPC when submitting the job request. Note: Llama 3.2 3B requires lighter hardware than Llama 3.3 70B.
 
-See the [SLURM Guide](https://kb.uconn.edu/space/SH/26032963685/SLURM+Guide) for more examples of how to request jobs on HPC
+See the [SLURM Guide](https://kb.uconn.edu/space/SH/26032963685/SLURM+Guide) for more examples of how to request jobs on HPC.
 
 * __Step E:__ Start an interactive job by running the following in Terminal:
 ```
@@ -112,9 +112,9 @@ module avail
 module avail python
 ```
 
-One option for using software not available as a module is with a container. The next section will discuss containers. In this section, we will load the necessary software which includes Python for running the script classify_with_ollama.py script and Apptainer for loading the Ollama software. 
+One option for using software not available as a module is with a container. The next section will discuss containers. In this section, we will load the necessary software which includes Python for running the script classify_with_ollama.py script and Apptainer for running the Ollama application. 
 
-UConn Storrs HPC uses Apptainer XX.XX.XX which has a dependency (GCC) incompatible with the default Python version. So we will first unload the conflicting modules and then load Apptainer and a compatible version of Python.
+UConn Storrs HPC uses Apptainer XX.XX.XX which has a dependency (gcc) incompatible with the default Python version. So we will first unload the conflicting modules and then load Apptainer and a compatible version of Python.
 
 * __Step F:__ Load modules by running the following in Terminal:
 ```
@@ -142,36 +142,36 @@ Images can be manually built, but Docker, a containerization service, contains a
 # docker://ollama/ollama:latest = path to the docker image to use
 apptainer build --force --docker-login --sandbox ollama/ docker://ollama/ollama:latest
 ```
-You will be prompted to login to your Docker account to connect the image to your account. This allows you to use Docker Hub track running containers that are connected to that image.
+Login to your Docker account to connect the image to your account. This allows you to use Docker Hub track running containers connected to that image.
 
 ### Start an Instance and Run Ollama
-Once the container is built, the container needs to be "turned on." Starting the container as an instance (instance start vs apptainer run) runs the container in the background. After the container is started, we will shell into it and start the Ollama application. 
+Once the container is built, the container needs to be "turned on." Starting the container as an instance (instance start vs apptainer run) runs the container in the background. After the container is started, we shell into it and start the Ollama application. 
 
-I like to think of instance start as turning on my computer and ollama serve as opening the Ollama app.
+Instance start is analagous to turning on the computer and ollama serve to opening the Ollama app.
 
-* __Step H:__ Start the instance and run Ollama by running the following in Terminal:
+* __Step H:__ Start the instance by running the following in Terminal:
 ```
 # apptainer = application
 # instance start = start running the container
 # ollama/ = name of the container (i.e., the custom name of the directory from the last step)
 # ollama_instance = a custom name for the instance
 apptainer instance start ollama/ ollama_instance
+```
 
+* __Step I:__ Shell into the instance and run Ollama by running the following in Terminal:
+```
 # apptainer = application
 # shell = enter the container
 # instance://ollama_instance = name of the instance to shell into
 apptainer shell instance://ollama_instance
-```
 
-* __Step I:__ Start the instance and run Ollama by running the following in Terminal:
-```
 # ollama = application
 # serve = start ollama
 ollama serve
 ```
 Running Ollama will take up the Terminal window. We'll complete the remainder of the demo in a new Terminal window.
 
-## Login to the Node
+### Login to the Node
 In a new terminal window, we will login to the same node Ollama is running on. 
 
 * __Step J:__ Login to UConn Storrs HPC by running the following in Terminal:
@@ -200,15 +200,30 @@ module load python/3.12.2
 ```
 
 ### Download Llama 3.2 3B
-The Llama 3.2 3B parameter model 
+The Ollama application is running in the container on the other Terminal window. 
 
+In the current terminal window, we'll enter the container and download the model we want to use i.e., the one referenced in the classify_with_ollama.py Python script.
+
+* __Step M:__ Load modules by running the following in Terminal:
 ```
+# apptainer = application
+# shell = enter the container
+# instance://ollama_instance = name of the instance to shell into
 apptainer shell instance://ollama_instance
-ollama list # check which models have been pulled
+
+# see which model's have been downloaded to the container
+ollama list
+
+# pull the Llama 3.2 model (by default this pulls the 3B param model)
 ollama pull llama3.2 # pull a new model
+
+# exit out of the container
+# i.e., go back to the hpc environment
+exit
 ```
 
 ### Install Python Packages
+Now that Ollama is running 
 ```
 # Step N: install python packages
 pip3 install -r requirements.txt
@@ -220,7 +235,7 @@ pip3 install -r requirements.txt
 # Step O: run the script
 python3 pilot_classifications_llama_ollama_hpc.py
 ```
-# Log out of instances
+### Log out of instances
 
 ```
 exit

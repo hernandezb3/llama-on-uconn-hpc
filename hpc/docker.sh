@@ -1,4 +1,6 @@
-# how to run the same container in docker:
+# build and run a Docker container from the a Docker image:
+# instead of using Apptainer to build the container
+
 # login to docker
 docker login
 

@@ -1,3 +1,4 @@
+# function to get the rmse of classified data
 def get_rmse(list1, list2):
     import pandas as pd
     import numpy as np
