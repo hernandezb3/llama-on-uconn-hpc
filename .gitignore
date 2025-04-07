@@ -65,15 +65,12 @@ MANIFEST
 
 # Ignore files for personal use:
 # personal logins, keys, and scripts
-library/start_bah.py
-library/secrets.py
+secrets.py
 steps_A-O_bah.sh
 
 # oamm data
 oamm_data/
 gold_standard_recalls.xlsx
-start_oamm.py
-classify_oamm_with_ollama.py
 oamm_output/
 
 # crisp data
