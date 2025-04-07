@@ -68,6 +68,14 @@ FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred bet
 To install and connect FileZilla to your HPC account, follow the steps from UConn Storrs HPC's [File Tranfer](https://kb.uconn.edu/space/SH/26033783688/File+Transfer) document, under the Data Storage Guide dropdown.
 
 * __Step C:__ Open FileZilla and click the Site Manager icon to connect to HPC
+
+* __Step D:__ (Option 1) Clone the GitHub Repository
+```
+# clone the repository
+git clone https://github.com/hernandezb3/llama-on-uconn-hpc.git
+
+# set 
+```
 * __Step D:__ Transfer these files to your HPC account: 
     - classify_with_ollama.py
     - test_ollama.py
