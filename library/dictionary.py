@@ -9,4 +9,4 @@ model_names = {"meta-llama/Llama-3.3-70B-Instruct": "llama3.3",
                "llama3.1": "llama3.1"}
 
 demo_prompts = {"hello": "Hello, how are you?",
-                "goodreads": "Does the following book review classify as good or bad?"}
+                "goodreads": "Predict the rating of the following book review on a scale of 1 = bad to 5 = good"}
