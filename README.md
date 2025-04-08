@@ -1,4 +1,4 @@
-# Running Llama on UConn High Performance Computing (HPC)
+# Running Llama on UConn Storrs High Performance Computing (HPC)
 This repository (repo) is for running Llama models from a Python script in UConn's HPC environment. Two approaches are included in the repo:
 
 1. Ollama downloaded with Apptainer (classify_with_ollama.py)
@@ -48,7 +48,7 @@ Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote logi
 
 For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol and has a different process for logging in. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
-* __Step B:__ Login to Storrs HPC from a MacOS computer by running the following in Terminal:
+* __Step B:__ (Option 1) Login to Storrs HPC from a MacOS computer by running the following in Terminal:
 ```
 # login to hpc
 # replace netid with your personal UConn NetID
@@ -61,6 +61,14 @@ Follow the prompts to enter your password and complete any 2FA authentication. W
 # hostname should return your assigned login node e.g., login4
 hostname
 ```
+* __Step B:__ (Option 2) Login to Storrs HPC from VS Code:
+Install the following extensions in VS Code:
+- Remote - SSH
+- Remote - SSH Editing Configuration Files
+- Remote - Tunnels
+- Remote Explorer
+
+Click the Remote Host tab in the bottom left corner of VS Code and select Connect to Host from the menu. Select + Add New SSH Host and type the path netid@hpc2.storrs.hpc.uconn.edu (inserting your personal NetID to the path). A configuration file will generate automatically and you'll be prompted to enter your password.
 
 ### Transfer Files
 FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred between your computer and HPC over the internet. The Python script and the files it references need to be transferred to HPC. Note that since the transfer occurs over the internet, you need to be connected to the UConn network (see the Connect to a VPN section above). 
@@ -69,14 +77,7 @@ To install and connect FileZilla to your HPC account, follow the steps from UCon
 
 * __Step C:__ Open FileZilla and click the Site Manager icon to connect to HPC
 
-* __Step D:__ (Option 1) Clone the GitHub Repository
-```
-# clone the repository
-git clone https://github.com/hernandezb3/llama-on-uconn-hpc.git
-
-# set 
-```
-* __Step D:__ Transfer these files to your HPC account: 
+* __Step D:__ (Option 1) Transfer these files to your HPC account: 
     - classify_with_ollama.py
     - test_ollama.py
     - requirements.txt
@@ -85,8 +86,20 @@ git clone https://github.com/hernandezb3/llama-on-uconn-hpc.git
         - secrets.py
         - start.py
     - data
-        - demo_prompts.csv
         - goodreads_20.csv
+
+* __Step D:__ (Option 2) Clone the GitHub Repository to your HPC account:
+```
+# (optional) set your current directory the folder where you'd like to clone the repo
+cd path/to/directory
+
+# clone the repository
+git clone https://github.com/hernandezb3/llama-on-uconn-hpc.git
+
+# set your current directory inside the repo
+cd llama-on-uconn-hpc
+```
+If you use Option 2 and are new to GitHub, please see the Dev.com [Mastering Git](https://dev.to/alexmercedcoder/mastering-git-a-comprehensive-guide-to-git-pull-and-git-push-2eo3) guide for how to update the repo as changes are made (i.e., pull changes).
 
 To check that the files loaded successfully, run the following in Terminal:
 ```
@@ -250,4 +263,5 @@ exit
 ```
 
 
-README updated: March 26, 2025
+Comments, questions, or suggestions to this repo? See the [Discussion](https://github.com/hernandezb3/llama-on-uconn-hpc/discussions) forum
+README last updated: March 26, 2025
