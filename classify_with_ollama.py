@@ -30,7 +30,7 @@ checkpoint1 = datetime.now() # runtime counter
 # prompts 
 prompts = dictionary.demo_prompts["goodreads"]
 
-# data
+# data frame
 df = pd.read_csv(start.DATA)
 
 # loop through running the model for each prompt

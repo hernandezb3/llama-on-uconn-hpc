@@ -11,9 +11,9 @@ Llama is a collection of open-source large language models (LLMs) developed by M
 
 Running these models can be resource intensive depending on the size of the model (i.e., number of parameters - 3B vs 70B) and the approach. Returning output from the same sized model e.g., Llama 3.2 3B is faster using Ollama than Hugging Face.
 
-The ultimate goal of this repo is to use Llama 3.3 70B for Project CRISP which asks the model to classify journal entries across various psychological characteristics e.g., meaning making. The README will demonstrate a classification task with a smaller model, Llama 3.2 3B and demo prompts. The demo (classify_with_ollama.py) prompts the model to classify Goodreads reviews as either a good or bad review. These data are sourced from [Kaggle.com](https://www.kaggle.com/competitions/goodreads-books-reviews-290312/data). 
+The ultimate goal of this repo is to use Llama 3.3 70B for Project CRISP data, asking the model to classify entries across various psychological characteristics e.g., meaning making. These data are not publicly available so the README will demonstrate a classification task with a smaller model, Llama 3.2 3B and demo data. The demo script (classify_with_ollama.py) prompts the model to classify Goodreads reviews into a 1-5 rating. These data are sourced from [Kaggle.com](https://www.kaggle.com/competitions/goodreads-books-reviews-290312/data). 
 
-Before running the demo at full scale, test_ollama.py can be used to ensure core functions of the demo, mainly testing file paths and that the model can take an input and generate an output within the HPC environment. 
+Before running the demo at full scale, test_ollama.py can be used to ensure core functions of the demo, namely testing file paths and that the model can generate an output from an input within the HPC environment. 
 
 ## Pre-Requisites
 This README assumes the following:
@@ -48,7 +48,7 @@ Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote logi
 
 For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol and has a different process for logging in. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
-* __Step B:__ (Option 1) Login to Storrs HPC from a MacOS computer by running the following in Terminal:
+* __Step B:__ Login to Storrs HPC from a MacOS computer by running the following in Terminal:
 ```
 # login to hpc
 # replace netid with your personal UConn NetID
@@ -61,14 +61,9 @@ Follow the prompts to enter your password and complete any 2FA authentication. W
 # hostname should return your assigned login node e.g., login4
 hostname
 ```
-* __Step B:__ (Option 2) Login to Storrs HPC from VS Code:
-Install the following extensions in VS Code:
-- Remote - SSH
-- Remote - SSH Editing Configuration Files
-- Remote - Tunnels
-- Remote Explorer
 
-Click the Remote Host tab in the bottom left corner of VS Code and select Connect to Host from the menu. Select + Add New SSH Host and type the path netid@hpc2.storrs.hpc.uconn.edu (inserting your personal NetID to the path). A configuration file will generate automatically and you'll be prompted to enter your password.
+Note the following error has been reported when pulling models from Apptainer containers built while logged into UConn Storrs HPC through Remote - SSH extensions in VS Code: 
+"Error: pull model manifest: Get "https://registry.ollama.ai/v2/library/1lama3.2/manifests/latest*: dial top: look up registry.ollama.ai on [::1]:53: read up [ 11 3428-7 12 105, read. connection refused"
 
 ### Transfer Files
 FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred between your computer and HPC over the internet. The Python script and the files it references need to be transferred to HPC. Note that since the transfer occurs over the internet, you need to be connected to the UConn network (see the Connect to a VPN section above). 
@@ -90,20 +85,20 @@ To install and connect FileZilla to your HPC account, follow the steps from UCon
 
 * __Step D:__ (Option 2) Clone the GitHub Repository to your HPC account:
 ```
-# (optional) set your current directory the folder where you'd like to clone the repo
+# (optional) cd = change directory: set your working directory the folder where you'd like to clone the repo
 cd path/to/directory
 
 # clone the repository
 git clone https://github.com/hernandezb3/llama-on-uconn-hpc.git
 
-# set your current directory inside the repo
+# set your working directory inside the repo
 cd llama-on-uconn-hpc
 ```
 If you use Option 2 and are new to GitHub, please see the Dev.com [Mastering Git](https://dev.to/alexmercedcoder/mastering-git-a-comprehensive-guide-to-git-pull-and-git-push-2eo3) guide for how to update the repo as changes are made (i.e., pull changes).
 
 To check that the files loaded successfully, run the following in Terminal:
 ```
-# check files loaded successfully
+# ls = list: check files loaded successfully
 ls
 ```
 ### Start an Interactive Job
