@@ -1,6 +1,8 @@
 # TERMINAL WINDOW 1 
 # objective = start the interactive session and start ollama
 
+# Step A: connect to UConn-Secure wifi
+
 # Step B: login to hpc
 # replace netid with your personal NetID
 ssh -Y netid@hpc2.storrs.hpc.uconn.edu
