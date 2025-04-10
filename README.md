@@ -9,11 +9,23 @@ This README documents how to use Approach #1 (above) to run a Python script whic
 
 Llama is a collection of open-source large language models (LLMs) developed by Meta (see more [here](https://www.llama.com)). The two approaches included in the repo are for running the models locally instead of using an API inference endpoint. Running the models locally is free and ensures the input data remain private. 
 
-Running these models can be resource intensive depending on the size of the model (i.e., number of parameters - 3B vs 70B) and the approach. Returning output from the same sized model e.g., Llama 3.2 3B is faster using Ollama than Hugging Face.
+Running these models can be resource intensive depending on the size of the model (i.e., number of parameters - 3B vs 70B) and the approach. Returning output from the same sized model e.g., Llama 3.2 3B is faster using Ollama than Hugging Face. While a personal computer might be sufficient for running smaller models, HPC can be useful for running larger models like Llama 3.3 70B. 
 
-The ultimate goal of this repo is to use Llama 3.3 70B for Project CRISP data, asking the model to classify entries across various psychological characteristics e.g., meaning making. These data are not publicly available so the README will demonstrate a classification task with a smaller model, Llama 3.2 3B and demo data. The demo script (classify_with_ollama.py) prompts the model to classify Goodreads reviews into a 1-5 rating. These data are sourced from [Kaggle.com](https://www.kaggle.com/competitions/goodreads-books-reviews-290312/data). 
+The ultimate goal of this repo is to use Llama 3.3 70B for Project CRISP data, asking the model to classify input across various psychological characteristics e.g., meaning making. 
+
+Included in the repo is a demo, showing how to use Llama for a classification task within the UConn Storrs HPC environment. The demo script (classify_with_ollama.py) prompts the model to classify a random sample of 20 Goodreads reviews into a 1-5 rating. These data are sourced from [Kaggle.com](https://www.kaggle.com/competitions/goodreads-books-reviews-290312/data). There are two variables of interest in goodreads_20.csv: (1) review_text: the text of the book review, (2) rating: a rating of the book on a 0 to 5 scale. 
+
+The demo will cover how to use containers, one option for using applications on UConn Storrs HPC. 
+
+more information about the partitions [here](https://kb.uconn.edu/space/SH/26032963610/Partitions+%2F+Storrs+HPC+Resources#I.-Partitions-of-the-Storrs-HPC)
 
 Before running the demo at full scale, test_ollama.py can be used to ensure core functions of the demo, namely testing file paths and that the model can generate an output from an input within the HPC environment. 
+
+Some final thoughts: 
+- This demo is not intended to replace the UConn Storrs Getting Started guide, but supplement information I have found useful while learning about containerization and HPC environments. 
+- If you are new to containers or HPC, I'd recommend testing at a small scale. I've included supplemental materials in the container to support this approach. For example:
+    - docker.sh contains Terminal commands for building a Docker container locally before scaling up to building them on HPC. To build a Docker container and run the classify_with_ollama.py script locally, see Resources > docker.sh
+    - test_ollama.py contains an even smaller scale demo testing core functions of the Goodreads demo e.g., testing file paths and that the model can output a response to the question, "Hi, how are you?" within the HPC environment. 
 
 ## Pre-Requisites
 This README assumes the following:
@@ -30,7 +42,9 @@ This README assumes the following:
     - [FileZilla]() File Transfer Protocol (FTP)
     - [Docker Account](https://www.docker.com)
 
-## Connect to UConn HPC
+## Demo: Llama 3.2 3B Classifications of Goodreads Book Reviews
+
+### Connect to UConn HPC
 This section summarizes UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. Each subsection provides direction for how to install the pre-requisites. Each step (e.g., __Step A__) assumes the pre-requisites are met.
 
 ### Connect to a VPN
@@ -257,7 +271,7 @@ pip3 install -r requirements.txt
 ### Run Python Script
 The script uses a demo prompt from the dictionary which asks, "Predict the rating of the following book review on a scale of 1 = bad to 5 = good." The script contains a loop that combines this prompt with each of the 20 reviews in goodreads_20.csv, inputs them into the model, returns an output, and calculates the root mean square error (RMSE) to determine how much the rating outputted by Llama deviates from each Goodreads rater's own rating of the book. 
 
-* __Step N:__ Install required python packages by running the following in Terminal:
+* __Step O:__ Install required python packages by running the following in Terminal:
 ```
 python3 classify_with_ollama.py
 ```
@@ -272,14 +286,14 @@ The script creates two files, df and output. The file that starts with df contai
 
 The files contained in all subfolders of output are ignored in .gitignore so they will not be pushed to GitHub. This structure allows us to standardize a path for where to save output files while protecting actual data from being pushed out publicly. 
 
-* __Step O:__ Save the output files
+* __Step P:__ Save the output files
 FileZilla
 scratch to shared
 
 ### Logout of HPC
 Running the exit 
 
-* __Step P:__ Logout of all terminal windows by running the following in Terminal:
+* __Step Q:__ Logout of all terminal windows by running the following in Terminal:
 ```
 exit
 # exit node?
