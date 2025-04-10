@@ -69,15 +69,15 @@ secrets.py
 steps_A-O_bah.sh
 
 # demo data
-demo_data/*
+*demo_data/
 
 # oamm data
 # * ignores all the files in a directory
-oamm_data/*
+*oamm_data/
 gold_standard_recalls.xlsx
-oamm_output/*
+*oamm_output/
 
 # crisp data
-crisp_data/*
-crisp_output/*
+*crisp_data/
+*crisp_output/
 
