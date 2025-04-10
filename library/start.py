@@ -4,11 +4,11 @@ import os
 MAIN_DIR = os.getcwd() + "/"
 
 # path to the data
-DATA_DIR = MAIN_DIR + "data/" # hpc
+DATA_DIR = MAIN_DIR + "data/demo_data/" # hpc
 
 # data to use:
 # goodreads demo data 
 DATA = DATA_DIR + "goodreads_20.csv"
 
 # path to output model responses:
-OUTPUT_DIR = MAIN_DIR + "output/" # hpc
+OUTPUT_DIR = MAIN_DIR + "output/demo_output/" # hpc

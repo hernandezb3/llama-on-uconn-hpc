@@ -7,9 +7,6 @@ import datetime # couldn't install use datetime
 from datetime import datetime
 import psutil
 import pandas as pd
-import ollama
-from ollama import chat
-from ollama import ChatResponse
 from langchain_ollama import OllamaLLM
 from library import start, dictionary, fit # take out oamm. to run whole file
 
@@ -55,13 +52,14 @@ request_runtime = checkpoint2 - checkpoint1
 cpu_usage = psutil.cpu_percent(total_runtime.total_seconds())
 ram_used = psutil.virtual_memory()[3]/1000000000 # in GB
 # compile into dataframe
-output = {"model": [model_id], "outcomes": [dictionary.OUTCOMES], "cases per outcome": [dictionary.SAMPLE_SIZE], "rmse": [rmse], "total runtime (min)": [total_runtime/60], "model_pull": [pull_model_runtime/60], "request": [request_runtime/60], "cpu ()": [cpu_usage], "ram (gb)": [ram_used]}
+output = {"model": [model_id], "n cases": [df.index], "rmse": [rmse], "total runtime (min)": [total_runtime/60], "model_pull": [pull_model_runtime/60], "request": [request_runtime/60], "cpu ()": [cpu_usage], "ram (gb)": [ram_used]}
 output = pd.DataFrame(output)
 print(output)
 
 # write df and output to an .xlsx file
+# create an output file in the parent directory
 path = start.OUTPUT_DIR
-filename = dictionary.model_names[model_id] + "_out" + str(len(dictionary.OUTCOMES)) + "_n" + str(dictionary.SAMPLE_SIZE) + ".csv"
+filename = df.index + dictionary.model_names[model_id] + ".csv"
 
-df.to_csv(path + "df_" + filename, index = False)
-output.to_csv(path + "output_" + filename, index = False)
+df.to_csv(path + "df_demo_" + filename, index = False)
+output.to_csv(path + "output_demo_" + filename, index = False)

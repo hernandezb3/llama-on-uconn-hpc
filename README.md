@@ -62,7 +62,8 @@ Follow the prompts to enter your password and complete any 2FA authentication. W
 hostname
 ```
 
-Note the following error has been reported when pulling models from Apptainer containers built while logged into UConn Storrs HPC through Remote - SSH extensions in VS Code: 
+Note the following error has been reported when pulling models from Apptainer containers built while logged into UConn Storrs HPC through Remote - SSH extensions in VS Code:
+
 "Error: pull model manifest: Get "https://registry.ollama.ai/v2/library/1lama3.2/manifests/latest*: dial top: look up registry.ollama.ai on [::1]:53: read up [ 11 3428-7 12 105, read. connection refused"
 
 ### Transfer Files
@@ -70,9 +71,12 @@ FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred bet
 
 To install and connect FileZilla to your HPC account, follow the steps from UConn Storrs HPC's [File Tranfer](https://kb.uconn.edu/space/SH/26033783688/File+Transfer) document, under the Data Storage Guide dropdown.
 
+Before uploading any data, please see [this link](https://kb.uconn.edu/space/SH/26033979893/FAQ#What-kind-of-data-can-be-stored-on-the-Storrs-HPC?) to the FAQs about what data can be stored on UConn Storrs HPC.
+
+
 * __Step C:__ Open FileZilla and click the Site Manager icon to connect to HPC
 
-* __Step D:__ (Option 1) Transfer these files to your HPC account: 
+* __Step D:__ (Option 1) Transfer these folders and files to your HPC account: 
     - classify_with_ollama.py
     - test_ollama.py
     - requirements.txt
@@ -82,6 +86,8 @@ To install and connect FileZilla to your HPC account, follow the steps from UCon
         - start.py
     - data
         - goodreads_20.csv
+    - output
+        - demo_output
 
 * __Step D:__ (Option 2) Clone the GitHub Repository to your HPC account:
 ```
@@ -94,7 +100,7 @@ git clone https://github.com/hernandezb3/llama-on-uconn-hpc.git
 # set your working directory inside the repo
 cd llama-on-uconn-hpc
 ```
-If you use Option 2 and are new to GitHub, please see the Dev.com [Mastering Git](https://dev.to/alexmercedcoder/mastering-git-a-comprehensive-guide-to-git-pull-and-git-push-2eo3) guide for how to update the repo as changes are made (i.e., pull changes).
+If you use Option 2 and are new to GitHub, please see docs.GitHub.com [Getting changes from a remote repository](https://docs.github.com/en/get-started/using-git/getting-changes-from-a-remote-repository) guide for how to update the repo as changes are made (e.g., pull, fetch).
 
 To check that the files loaded successfully, run the following in Terminal:
 ```
@@ -111,9 +117,9 @@ See the [SLURM Guide](https://kb.uconn.edu/space/SH/26032963685/SLURM+Guide) for
 # srun = requests an interactive job
 # -n = number of nodes (1)
 # -t = time allocation (30 minutes)
-# --mem = ram (8 GB)
+# --mem = ram (16 GB)
 # --pty = scripting language (bash)
-srun -n 1 -t 0:30:00 --mem=8G --pty bash
+srun -n 1 -t 0:30:00 --mem=16G --pty bash
 
 # check what node you are on:
 hostname
@@ -130,7 +136,7 @@ module avail python
 
 One option for using software not available as a module is with a container. The next section will discuss containers. In this section, we will load the necessary software which includes Python for running the script classify_with_ollama.py script and Apptainer for running the Ollama application. 
 
-UConn Storrs HPC uses Apptainer XX.XX.XX which has a dependency (gcc) incompatible with the default Python version. So we will first unload the conflicting modules and then load Apptainer and a compatible version of Python.
+UConn Storrs HPC uses Apptainer 1.1.3 which has a dependency (gcc) incompatible with the Python version loaded by default. So we will first unload conflicting modules and then load Apptainer and a compatible version of Python.
 
 * __Step F:__ Load modules by running the following in Terminal:
 ```
@@ -185,10 +191,10 @@ apptainer shell instance://ollama_instance
 # serve = start ollama
 ollama serve
 ```
-Running Ollama will take up the Terminal window. We'll complete the remainder of the demo in a new Terminal window.
+Running the Ollama application will take up the entire terminal window. We'll complete the remainder of the demo in another terminal window.
 
-### Login to the Node
-In a new terminal window, we will login to the same node Ollama is running on. 
+### Directly Login to the Node
+In a new terminal window, we will login to the same node Ollama is running on. Many of these steps will repeat what we did in the first terminal window.
 
 * __Step J:__ Login to UConn Storrs HPC by running the following in Terminal:
 ```
@@ -205,6 +211,9 @@ ssh -Y netid@hpc2.storrs.hpc.uconn.edu
 ssh node
 ```
 
+### Load Modules
+We will be using Apptainer again and Python, so load those modules. 
+
 * __Step L:__ Load modules by running the following in Terminal:
 ```
 # remove incompatible packages
@@ -216,21 +225,19 @@ module load python/3.12.2
 ```
 
 ### Download Llama 3.2 3B
-The Ollama application is running in the container on the other Terminal window. 
+Now, enter the container where Ollama is running and download the Llama model that will be used in the Python script i.e., classify_with_ollama.py. To try the demo with another model it needs to be changed in the script and then downloaded into the container. Note that Ollama needs to be running in order to download any models.
 
-In the current terminal window, we'll enter the container and download the model we want to use i.e., the one referenced in the classify_with_ollama.py Python script.
-
-* __Step M:__ Load modules by running the following in Terminal:
+* __Step M:__ Load models by running the following in Terminal:
 ```
 # apptainer = application
 # shell = enter the container
 # instance://ollama_instance = name of the instance to shell into
 apptainer shell instance://ollama_instance
 
-# see which model's have been downloaded to the container
+# list the models that are downloaded in the container
 ollama list
 
-# pull the Llama 3.2 model (by default this pulls the 3B param model)
+# pull the Llama 3.2 model (by default this pulls the 3B parameter model by default)
 ollama pull llama3.2 # pull a new model
 
 # exit out of the container
@@ -239,24 +246,50 @@ exit
 ```
 
 ### Install Python Packages
-Now that Ollama is running 
+The Python script, classify_with_ollama.py, uses a host of packages e.g., Pandas and langchain_Ollama, a package for using Ollama. The packages required to run all the scripts in this repo are are listed in requirements.txt. The required packages specific to each script can be found at the top of each script. For Windows commands and additional support installing packages from a requirements file please see this [Pip User Guide](https://pip.pypa.io/en/latest/reference/requirements-file-format/#requirements-file-format). 
+
+* __Step N:__ Install required python packages by running the following in Terminal:
 ```
-# Step N: install python packages
+# -r = install from the given requirements file
 pip3 install -r requirements.txt
 ```
 
 ### Run Python Script
+The script uses a demo prompt from the dictionary which asks, "Predict the rating of the following book review on a scale of 1 = bad to 5 = good." The script contains a loop that combines this prompt with each of the 20 reviews in goodreads_20.csv, inputs them into the model, returns an output, and calculates the root mean square error (RMSE) to determine how much the rating outputted by Llama deviates from each Goodreads rater's own rating of the book. 
+
+* __Step N:__ Install required python packages by running the following in Terminal:
+```
+python3 classify_with_ollama.py
+```
+
+### Download the Output
+The script creates two files, df and output. The file that starts with df contains a dataframe of the data which contains a column for the RMSE for each case. The file that starts with output contains information about the resources used to create the model. For example, in it is a calculation for how much RAM was used when prompting the model. This information can be used to compare the resources used between different sized models and different sets of data.
 
 ```
-# Step O: run the script
-python3 pilot_classifications_llama_ollama_hpc.py
-```
-### Log out of instances
+# = view the contents of a file
 
+```
+
+The files contained in all subfolders of output are ignored in .gitignore so they will not be pushed to GitHub. This structure allows us to standardize a path for where to save output files while protecting actual data from being pushed out publicly. 
+
+* __Step O:__ Save the output files
+FileZilla
+scratch to shared
+
+### Logout of HPC
+Running the exit 
+
+* __Step P:__ Logout of all terminal windows by running the following in Terminal:
 ```
 exit
+# exit node?
 ```
 
+Check that you are on a login node:
+```
+hostname
+```
 
 Comments, questions, or suggestions to this repo? See the [Discussion](https://github.com/hernandezb3/llama-on-uconn-hpc/discussions) forum
-README last updated: March 26, 2025
+
+README last updated: April 9, 2025

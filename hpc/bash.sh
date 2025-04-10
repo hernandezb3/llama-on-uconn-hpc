@@ -1,4 +1,6 @@
 # misc bash commands for navigating UConn Storrs HPC
+date # gets date and timestamp
+
 hostname # show the system's host name i.e., check the node
 
 pwd # pwd = print working directory
@@ -28,10 +30,14 @@ cat # print the contents of a file
 # df = disk space usage
 df -k # check the storage of the partition
 
+# modules
+module avail
+module avail apptainer # check which versions of apptainer are available
+module avail python # check which versions of python are available
+
+# github
+git clone https://github.com/hernandezb3/llama-on-uconn-hpc.git # clone this repo
+git fetch # retrieve changes without affecting the local repository
+git pull # retrieve changes and synchronize local repository
+
 # ctrl + c to kill a running command
-
-date # gets date and timestamp
-
-
-
-#git clone https://github.com/hernandezb3/crisp_hpc

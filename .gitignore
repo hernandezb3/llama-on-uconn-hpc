@@ -68,6 +68,9 @@ MANIFEST
 secrets.py
 steps_A-O_bah.sh
 
+# demo data
+demo_data/*
+
 # oamm data
 # * ignores all the files in a directory
 oamm_data/*
