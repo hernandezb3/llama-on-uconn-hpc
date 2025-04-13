@@ -7,7 +7,7 @@ This repository (repo) is for running Llama models from a Python script in UConn
 ## Summary
 This README documents how to use Approach #1 (above) to run a Python script which inputs a prompt and outputs a response from a Llama model. 
 
-Llama is a collection of open-source large language models (LLMs) developed by Meta (see more [here](https://www.llama.com)). The two approaches included in the repo are for running the models locally instead of using an API inference endpoint. Running the models locally is free and ensures the input data remain private. 
+Llama is a collection of open-source large language models (LLMs) developed by Meta (see more [here](https://www.llama.com)). The two approaches included in the repo are for running the models locally instead of using an API inference endpoint. Running the models locally is free and ensures the input data are contained locally. 
 
 Running these models can be resource intensive depending on the size of the model (i.e., number of parameters - 3B vs 70B) and the approach. Returning output from the same sized model e.g., Llama 3.2 3B is faster using Ollama than Hugging Face. While a personal computer might be sufficient for running smaller models, HPC can be useful for running larger models like Llama 3.3 70B. 
 
@@ -15,7 +15,9 @@ The ultimate goal of this repo is to use Llama 3.3 70B for Project CRISP data, a
 
 Included in the repo is a demo, showing how to use Llama for a classification task within the UConn Storrs HPC environment. The demo script (classify_with_ollama.py) prompts the model to classify a random sample of 20 Goodreads reviews into a 1-5 rating. These data are sourced from [Kaggle.com](https://www.kaggle.com/competitions/goodreads-books-reviews-290312/data). There are two variables of interest in goodreads_20.csv: (1) review_text: the text of the book review, (2) rating: a rating of the book on a 0 to 5 scale. 
 
-The demo will cover how to use containers, one option for using applications on UConn Storrs HPC. 
+The demo will cover how to use containers, one option for using external software on UConn Storrs HPC. 
+
+![alt text](readme_images/steps.png)
 
 more information about the partitions [here](https://kb.uconn.edu/space/SH/26032963610/Partitions+%2F+Storrs+HPC+Resources#I.-Partitions-of-the-Storrs-HPC)
 
