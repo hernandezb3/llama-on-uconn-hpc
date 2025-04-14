@@ -20,7 +20,7 @@ The demo (classify_with_ollama.py) prompts Llama 3.2 3B to classify a random sam
 
 The input data is a combination of a prompt, i.e., the task the model is being asked to perform, and the case, the scenario the model should consider when performing the task. In the demo, the prompt is for the model to assign a rating of the book review on a scale from 0 = bad to 5 = good.
 
-<img src="readme_images/model_interaction.png" width="200">
+<img src="readme_images/model_interaction.png" width="600">
 
 The demo contains Steps A-Q which include how to log in and request a job from UConn Storrs HPC, how to build a container from a Docker image as an option for running software, and how to use langchain_Ollama in Python to prompt models downloaded in the container. These steps are completed in two separate terminal windows. The figure below provides a high level overview of the demo and deliniates the steps completed on each terminal window:
 
