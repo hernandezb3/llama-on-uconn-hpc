@@ -30,7 +30,7 @@ The book reviews are sourced from train.csv on [Kaggle.com](https://www.kaggle.c
 
 The review_text variable is used for generating the input and the rating variable is used to evaluate the performance of the ratings assigned by Llama. The Root Mean Square Error (RMSE) estimates on average, how different the Llama ratings of the book reviews are from the ratings each person gave the book on Goodreads.
 ```math
-\mathop{\mathrm{RMSE}} = \sqrt{ \frac{1}{n} \sum_{i=0}^{n-1} (y_i - x_i)^2 }
+\mathop{\mathrm{RMSE}} = \sqrt{ \frac{\sum_{i=0}^{N} (Gooreads - Llama)^2}{N}  }
 ```
 <br/>
 Logging into HPC for the first time requires some initial set up, listed in the Pre-Requisites section. Each subsection below provides documentation assuming this is the first time connecting to HPC. Steps A-Q call attention to the steps performed the demo is run, even after the inital set up. Each step therefore assumes the pre-requisites are met. These steps are also compied in Resources > steps_A-Q.sh. 
