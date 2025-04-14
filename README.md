@@ -26,11 +26,16 @@ The book reviews are sourced from train.csv on [Kaggle.com](https://www.kaggle.c
 - review_text: the text of the book review
 - rating: a rating of the book on a 0 to 5 scale
 
-The review_text variable is used for generating the input and the rating variable is used to evaluate the performance of the ratings assigned by Llama. 
+![alt text](readme_images/goodreads_preview.png)
+
+The review_text variable is used for generating the input and the rating variable is used to evaluate the performance of the ratings assigned by Llama. The Root Mean Square Error (RMSE) estimates on average, how different the Llama ratings of the book reviews are from the ratings each person gave the book on Goodreads.
+```math
+\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)
+```
 
 Logging into HPC for the first time requires some initial set up, listed in the Pre-Requisites section. Each subsection below provides documentation assuming this is the first time connecting to HPC. Steps A-Q call attention to the steps performed the demo is run, even after the inital set up. Each step therefore assumes the pre-requisites are met. These steps are also compied in Resources > steps_A-Q.sh. 
 
-Two seperate Terminal windows are used in the demo. The figure below provides a high level overview of Steps A-Q and deliniates the steps performed on each Terminal window. Steps on the left and in green are performed in Terminal Window 1 and steps on the right in blue are perfomed in Terminal Window 2. <code style="color:#74BA9C">text</code>
+Two seperate Terminal windows are used in the demo. The figure below provides a high level overview of Steps A-Q and deliniates the steps performed on each Terminal window. Steps on the left and in green are performed in Terminal Window 1 and steps on the right in blue are perfomed in Terminal Window 2.
 
 <p align="center">
 <img src="readme_images/steps_A-Q.png" height="650">
