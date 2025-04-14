@@ -40,7 +40,7 @@ Two seperate Terminal windows are used in the demo. The figure below provides a 
 <p align="center">
 <img src="readme_images/steps_A-Q.png" height="650">
 </p>
-
+/n /n
 Final thoughts: 
 - This demo is not intended to replace the UConn Storrs HPC documentation, but provide an applied task to navigate. I tried to note any information I found relevant or useful while learning about HPC environments and containerizing applications. 
 - If you are new to HPC or containers, I'd recommend testing small and building upon these tests. I've included supplemental materials in the container to support this. For example:
@@ -48,7 +48,7 @@ Final thoughts:
     - Are you new to Docker? The Resources folder contains a file called docker.sh with Terminal commands to build an Ollama Docker container using Docker commands. This allows you to build the container locally before using Apptainer on HPC. 
 
 ## Context and Pre-Requisites
-The demo is documented with the following assumptions:
+The demo is documented under the following assumptions:
 - Personal Device:
     - Mac Operating System (OS)
     - [VS Code](https://code.visualstudio.com) Interactive Development Environment (IDE)
@@ -62,7 +62,7 @@ The demo is documented with the following assumptions:
     - [FileZilla]() File Transfer Protocol (FTP)
     - [Docker Account](https://www.docker.com)
 
-## Demo 
+## Goodreads Demo 
 
 ### Connect to Wifi
 Users need to be connected ton UConn-Secure WiFi to access HPC. Those on campus can connect to UConn-Secure WIFi or an on-campus ethernet port. 
@@ -80,6 +80,8 @@ Displaying program graphics, like rendering a plot, requires an X11 Window Syste
 Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. MacOS and Linux OS users can login to HPC using the default Terminal application. 
 
 For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol and has a different process for logging in. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
+
+![alt text](readme_images/ssh_hpc.png)
 
 * __Step B:__ Login to Storrs HPC from a MacOS computer by running the following in Terminal:
 ```
@@ -189,6 +191,8 @@ A container is an isolated environment to run an application. Within the contain
 
 Images can be manually built, but Docker, a containerization service, contains a library of prebuilt images. Apptainer, the container system used by UConn Storrs HPC, is compatible with Docker, so with Apptainer we can pull images from the Docker library to build containers. To run Ollama on UConn Storrs HPC, we will the Ollama image from the Docker library to build a container.
 
+![alt text](readme_images/containers.png)
+
 * __Step G:__ Build the Ollama container by running the following in Terminal:
 ```
 # build an apptainer container from the docker repository
@@ -218,6 +222,8 @@ apptainer instance start ollama/ ollama_instance
 ```
 ### Run Ollama
 To open the Ollama application in the container use ollama serve. 
+
+![alt text](readme_images/nesting.png)
 
 * __Step I:__ Shell into the instance and run Ollama by running the following in Terminal:
 ```
