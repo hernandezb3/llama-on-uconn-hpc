@@ -34,7 +34,7 @@ The review_text variable is used for generating the input and the rating variabl
 ```
 <br/>
 Logging into HPC for the first time requires some initial set up, listed in the Pre-Requisites section. Each subsection below provides documentation assuming this is the first time connecting to HPC. Steps A-Q call attention to the steps performed the demo is run, even after the inital set up. Each step therefore assumes the pre-requisites are met. These steps are also compied in Resources > steps_A-Q.sh. 
-<br/>
+<br/><br/>
 Two seperate Terminal windows are used in the demo. The figure below provides a high level overview of Steps A-Q and deliniates the steps performed on each Terminal window. Steps on the left and in green are performed in Terminal Window 1 and steps on the right in blue are perfomed in Terminal Window 2.
 
 <p align="center">
