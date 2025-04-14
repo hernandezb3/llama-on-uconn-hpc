@@ -39,8 +39,8 @@ for case in df["review_text"]:
     response = llm.invoke(input)
     llama_output.append(response)
     print(response)
-df["llama_goodreads"] = llama_output
-rmse.append(fit.get_rmse(df["classify"], df["llama_goodreads"]))
+df["llama_rating"] = llama_output
+rmse.append(fit.get_rmse(df["rating"], df["llama_rating"]))
 
 checkpoint2 = datetime.now() # end runtime counter
 print(df)
