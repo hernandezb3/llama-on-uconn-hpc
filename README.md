@@ -149,7 +149,8 @@ There are two ways to request resources from UConn Storrs HPC, an interactive jo
 ![alt text](readme_images/jobs.png)
 
 The job request is where to specify what HPC resources we'd like to use. If you have certain
-![alt text](readme_images/hpc_nodes.png)
+![alt text](readme_images/hpc_nodes_1.png)
+![alt text](readme_images/hpc_nodes_2.png)
 
 Sites like [apx.com](https://apxml.com/posts/ultimate-system-requirements-llama-3-models) and [nodeshift.com](https://nodeshift.com/blog/how-to-install-llama-3-3-70b-instruct-locally) can be used to determine what resources to request from HPC when submitting the job request. Note: Llama 3.2 3B requires lighter hardware than Llama 3.3 70B.
 
