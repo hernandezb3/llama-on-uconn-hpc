@@ -22,9 +22,9 @@ The information input to the model are a combination of a prompt, i.e., the task
 <img src="readme_images/model_interaction.png" width="650">
 </p>
 
-The book reviews are sourced from train.csv on [Kaggle.com](https://www.kaggle.com/competitions/goodreads-books-reviews-290312/data). A random sample of 20 reviews was generated using goodreads_sample.py which creates the sample found in goodreads_20.csv. There are two variables of interest in goodreads_20.csv: 
-- review_text: the text of the book review
+The book reviews are sourced from train.csv on [Kaggle.com](https://www.kaggle.com/competitions/goodreads-books-reviews-290312/data). A random sample of 20 reviews was generated using goodreads_sample.py which creates the sample in goodreads_20.csv. There are two variables of interest in goodreads_20.csv: 
 - rating: a rating of the book on a 0 to 5 scale
+- review_text: the text of the book review
 
 ![alt text](readme_images/goodreads_preview.png)
 
@@ -33,22 +33,24 @@ The review_text variable is used for generating the input and the rating variabl
 \mathop{\mathrm{RMSE}} = \sqrt{ \frac{\sum_{i=1}^{N} (Goodreads_i - Llama_i)^2}{N}  }
 ```
 <br/>
-Logging into HPC for the first time requires some initial set up, listed in the Pre-Requisites section. Each subsection below provides documentation assuming this is the first time connecting to HPC. Steps A-Q call attention to the steps performed the demo is run, even after the inital set up. Each step therefore assumes the pre-requisites are met. These steps are also compied in Resources > steps_A-Q.sh. 
+Logging into HPC for the first time requires some initial set up, listed in the Pre-Requisites section. Each subsection of the demo assumes this is the first time connecting to HPC and using containers. Steps A-Q call attention to the steps performed every time the demo is run, even after the inital set up. Each step therefore assumes the pre-requisites are met. These steps are also compiled in steps_A-Q.sh in the Resources folder. 
 <br/><br/>
 Two seperate Terminal windows are used in the demo. The figure below provides a high level overview of Steps A-Q and deliniates the steps performed on each Terminal window. Steps on the left and in green are performed in Terminal Window 1 and steps on the right in blue are perfomed in Terminal Window 2.
-
+<br/><br/>
 <p align="center">
 <img src="readme_images/steps_A-Q.png" height="650">
 </p>
 
 Final thoughts: 
-- This demo is not intended to replace the UConn Storrs HPC documentation, but provide an applied task to navigate. I tried to note any information I found relevant or useful while learning about HPC environments and containerizing applications. 
-- If you are new to HPC or containers, I'd recommend testing small and building upon these tests. I've included supplemental materials in the container to support this. For example:
-    - Are you new to HPC? test_ollama.py contains an even smaller scale demo testing core functionality of running a Llama model on HPC. It prompts the model with, "Hi, how are you?" and outputs a response.
-    - Are you new to Docker? The Resources folder contains a file called docker.sh with Terminal commands to build an Ollama Docker container using Docker commands. This allows you to build the container locally before using Apptainer on HPC. 
+- This demo is not intended to replace the UConn Storrs HPC documentation, but provide an applied task to navigate it with. I've tried to note any information I found relevant while learning about HPC environments and containerizing applications. 
+- If you are new to HPC or containers, I'd recommend testing small and building upon these tests. I've included scripts in the Resources folder to support this. For example:
+    - __Are you new to HPC?__ test_ollama.py contains an even smaller scale demo testing core functionality of running a Llama model on HPC. It prompts the model with, "Hi, how are you?" and outputs a response.
+    - __Are you new to Docker?__ docker.sh contains Terminal commands to build an Ollama Docker container using Docker commands. This allows you to build the container locally before using Apptainer on HPC. 
 
 ## Context and Pre-Requisites
 The demo is documented under the following assumptions:
+- First time using HPC
+- Off campus
 - Personal Device:
     - Mac Operating System (OS)
     - [VS Code](https://code.visualstudio.com) Interactive Development Environment (IDE)
@@ -65,7 +67,7 @@ The demo is documented under the following assumptions:
 ## Goodreads Demo 
 
 ### Connect to Wifi
-Users need to be connected ton UConn-Secure WiFi to access HPC. Those on campus can connect to UConn-Secure WIFi or an on-campus ethernet port. 
+Users need to be connected to UConn-Secure WiFi to access HPC. Those on campus can connect to UConn-Secure WIFi or an on-campus ethernet port. 
 
 Accessing the UConn network off campus requires a VPN. Install Cisco AnyConnect and follow the set-up instructions [here](https://kb.uconn.edu/space/IKB/10907091023/Set+Up+Cisco+AnyConnect+VPN) (also linked in the pre-requisites section).
 
@@ -77,11 +79,15 @@ Displaying program graphics, like rendering a plot, requires an X11 Window Syste
 [XQuartz](https://www.xquartz.org) the X11 Window System for MacOS. The X11 Window System requirements will vary by OS and by computer. Some Windows users may need to install [VcXsrv](https://sourceforge.net/projects/vcxsrv/) while Linux users don't need to install an X11 Window System. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
 ### Login to HPC
-Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. MacOS and Linux OS users can login to HPC using the default Terminal application. 
-
-For Windows OS, [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol and has a different process for logging in. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
+Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. The shell lets us to communicate with HPC. Using the shell we can sen input like commands to create a directory and recieve outputs, like an error message through the terminal.
 
 ![alt text](readme_images/ssh_hpc.png)
+
+MacOS and Linux OS users can login to HPC using the default Terminal application without installing anything. Windows OS does not automatically have a Unix Shell program installed and [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol. For more information about logging into HPC, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
+
+Note the following error has been reported when pulling models from Apptainer containers built while logged into UConn Storrs HPC through Remote - SSH extensions in VS Code:
+
+"Error: pull model manifest: Get "https://registry.ollama.ai/v2/library/1lama3.2/manifests/latest*: dial top: look up registry.ollama.ai on [::1]:53: read up [ 11 3428-7 12 105, read. connection refused"
 
 * __Step B:__ Login to Storrs HPC from a MacOS computer by running the following in Terminal:
 ```
@@ -97,17 +103,12 @@ Follow the prompts to enter your password and complete any 2FA authentication. W
 hostname
 ```
 
-Note the following error has been reported when pulling models from Apptainer containers built while logged into UConn Storrs HPC through Remote - SSH extensions in VS Code:
-
-"Error: pull model manifest: Get "https://registry.ollama.ai/v2/library/1lama3.2/manifests/latest*: dial top: look up registry.ollama.ai on [::1]:53: read up [ 11 3428-7 12 105, read. connection refused"
-
 ### Load Files
 FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred between your computer and HPC over the internet. The Python script and the files it references need to be transferred to HPC. Note that since the transfer occurs over the internet, you need to be connected to the UConn network (see the Connect to a VPN section above). 
 
 To install and connect FileZilla to your HPC account, follow the steps from UConn Storrs HPC's [File Tranfer](https://kb.uconn.edu/space/SH/26033783688/File+Transfer) document, under the Data Storage Guide dropdown.
 
 Before uploading any data, please see [this link](https://kb.uconn.edu/space/SH/26033979893/FAQ#What-kind-of-data-can-be-stored-on-the-Storrs-HPC?) to the FAQs about what data can be stored on UConn Storrs HPC.
-
 
 * __Step C:__ Open FileZilla and click the Site Manager icon to connect to HPC
 
@@ -143,11 +144,16 @@ To check that the files loaded successfully, run the following in Terminal:
 ls
 ```
 ### Request a Job
-There are two ways to request resources from UConn Storrs HPC, an interactive job (srun) or a scheduled job (sbatch). For more information, see Step 5 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. Sites like [apx.com](https://apxml.com/posts/ultimate-system-requirements-llama-3-models) and [nodeshift.com](https://nodeshift.com/blog/how-to-install-llama-3-3-70b-instruct-locally) can be used to determine what resources to request from HPC when submitting the job request. Note: Llama 3.2 3B requires lighter hardware than Llama 3.3 70B.
-
-more information about the partitions [here](https://kb.uconn.edu/space/SH/26032963610/Partitions+%2F+Storrs+HPC+Resources#I.-Partitions-of-the-Storrs-HPC)
+There are two ways to request resources from UConn Storrs HPC, an interactive job (srun) or a scheduled job (sbatch). The demo requests an interactive job, so we can drop-in to HPC to send inputs and recieve outputs from HPC in real time. For more information about job types, see Step 5 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
 ![alt text](readme_images/jobs.png)
+
+The job request is where to specify what HPC resources we'd like to use. If you have certain
+![alt text](readme_images/hpc_nodes.png)
+
+Sites like [apx.com](https://apxml.com/posts/ultimate-system-requirements-llama-3-models) and [nodeshift.com](https://nodeshift.com/blog/how-to-install-llama-3-3-70b-instruct-locally) can be used to determine what resources to request from HPC when submitting the job request. Note: Llama 3.2 3B requires lighter hardware than Llama 3.3 70B.
+
+more information about the partitions [here](https://kb.uconn.edu/space/SH/26032963610/Partitions+%2F+Storrs+HPC+Resources#I.-Partitions-of-the-Storrs-HPC)
 
 See the [SLURM Guide](https://kb.uconn.edu/space/SH/26032963685/SLURM+Guide) for more examples of how to request jobs on HPC.
 
