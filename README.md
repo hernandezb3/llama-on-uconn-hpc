@@ -11,15 +11,13 @@ The ultimate goal of this repo is to use Approach #1 (above) to prompt Llama 3.3
 <img src="readme_images/crisp.png" width="650">
 </p>
 
-Included in the repo is a demo, showing how to use Llama for a similar task within the UConn Storrs HPC environment.
+Included in the repo is a demo, showing how to use Llama models for a similar task within the UConn Storrs HPC environment.
 
 Llama is a collection of open-source large language models (LLMs) developed by Meta (see more [here](https://www.llama.com)). The two approaches included in the repo are for running the models locally instead of using an API inference endpoint. Running the models locally is free and ensures the input data are contained locally. 
 
 Running these models can be resource intensive depending on the size of the model (i.e., number of parameters - 3B vs 70B) and the approach. Returning output from the same sized model e.g., Llama 3.2 3B is faster using Ollama than Hugging Face. While a personal computer might be sufficient for running smaller models, HPC can be useful for running larger models like Llama 3.3 70B. 
 
-Included in the repo is a demo of how run Llama models on UConn Storrs HPC.
-
-## Demo Summary
+## Goodreads Demo Summary
 The demo (classify_with_ollama.py) prompts Llama 3.2 3B to classify a random sample of 20 Goodreads book reviews into a 0-5 rating. 
 
 The information input to the model are a combination of a prompt, i.e., the task the model is being asked to perform, and the case, i.e., the scenario the model should consider when performing the task. In the demo, the prompt asks the model to assign a rating on a scale from 0 = bad to 5 = good and the case is a book review. 
@@ -34,7 +32,9 @@ The book reviews are sourced from train.csv on [Kaggle.com](https://www.kaggle.c
 
 ![alt text](readme_images/goodreads_preview.png)
 
-The review_text variable is used for generating the input and the rating variable is used to evaluate the performance of the ratings assigned by Llama. The Root Mean Square Error (RMSE) estimates on average, how different the Llama ratings of the book reviews are from the ratings each person gave the book on Goodreads.
+The each row in review_text is a case that is paired with the prompt and input to the model. For each row, Llama will output a rating based on the input, saved to the dataframe as llama_rating. The rating variable is the "true" rating the reviewer posted to Goodreads with their review_text. 
+
+We'll evaluate model performance with the Root Mean Square Error (RMSE) to estimate average difference between the "true" Goodreads rating and Llama's rating. 
 ```math
 \mathop{\mathrm{RMSE}} = \sqrt{ \frac{\sum_{i=1}^{N} (Goodreads_i - Llama_i)^2}{N}  }
 ```
