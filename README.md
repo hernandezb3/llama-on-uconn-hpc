@@ -5,7 +5,13 @@ This repository (repo) is for running Llama models from a Python script in UConn
 2. Hugging Face (classify_with_hugging_face.py)
 
 ## CRISP Project Summary
-The ultimate goal of this repo is to use Approach #1 (above) to prompt Llama 3.3 70B with Project CRISP data, asking the model to classify input across various psychological characteristics e.g., meaning making. Included in the repo is a demo, showing how to use Llama for a classification task within the UConn Storrs HPC environment. 
+The ultimate goal of this repo is to use Approach #1 (above) to prompt Llama 3.3 70B with Project CRISP data, asking the model to classify text across various psychological characteristics e.g., meaning making. 
+
+<p align="center">
+<img src="readme_images/crisp.png" width="650">
+</p>
+
+Included in the repo is a demo, showing how to use Llama for a similar task within the UConn Storrs HPC environment.
 
 Llama is a collection of open-source large language models (LLMs) developed by Meta (see more [here](https://www.llama.com)). The two approaches included in the repo are for running the models locally instead of using an API inference endpoint. Running the models locally is free and ensures the input data are contained locally. 
 
@@ -42,7 +48,7 @@ Two seperate Terminal windows are used in the demo. The figure below provides a 
 </p>
 
 Final thoughts: 
-- This demo is not intended to replace the UConn Storrs HPC documentation, but provide an applied task to navigate it with. I've tried to note any information I found relevant while learning about HPC environments and containerizing applications. 
+- This demo is not a replacement for the UConn Storrs HPC documentation, but provides an applied task to navigate it with.
 - If you are new to HPC or containers, I'd recommend testing small and building upon these tests. I've included scripts in the Resources folder to support this. For example:
     - __Are you new to HPC?__ test_ollama.py contains an even smaller scale demo testing core functionality of running a Llama model on HPC. It prompts the model with, "Hi, how are you?" and outputs a response.
     - __Are you new to Docker?__ docker.sh contains Terminal commands to build an Ollama Docker container using Docker commands. This allows you to build the container locally before using Apptainer on HPC. 
@@ -64,7 +70,7 @@ The demo is documented under the following assumptions:
     - [FileZilla]() File Transfer Protocol (FTP)
     - [Docker Account](https://www.docker.com)
 
-## Goodreads Demo 
+## Goodreads Demo
 
 ### Connect to Wifi
 Users need to be connected to UConn-Secure WiFi to access HPC. Those on campus can connect to UConn-Secure WIFi or an on-campus ethernet port. 
@@ -79,15 +85,13 @@ Displaying program graphics, like rendering a plot, requires an X11 Window Syste
 [XQuartz](https://www.xquartz.org) the X11 Window System for MacOS. The X11 Window System requirements will vary by OS and by computer. Some Windows users may need to install [VcXsrv](https://sourceforge.net/projects/vcxsrv/) while Linux users don't need to install an X11 Window System. For more information, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
 ### Login to HPC
-Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. The shell lets us to communicate with HPC. Using the shell we can sen input like commands to create a directory and recieve outputs, like an error message through the terminal.
+Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. This lets us to communicate with HPC - like send inputs and recieve outputs.
 
-![alt text](readme_images/ssh_hpc.png)
+![alt text](readme_images/local_to_hpc.png)
 
 MacOS and Linux OS users can login to HPC using the default Terminal application without installing anything. Windows OS does not automatically have a Unix Shell program installed and [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol. For more information about logging into HPC, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
-Note the following error has been reported when pulling models from Apptainer containers built while logged into UConn Storrs HPC through Remote - SSH extensions in VS Code:
-
-"Error: pull model manifest: Get "https://registry.ollama.ai/v2/library/1lama3.2/manifests/latest*: dial top: look up registry.ollama.ai on [::1]:53: read up [ 11 3428-7 12 105, read. connection refused"
+Note: errors have been reported with building and using the Ollama container when logged into UConn Storrs HPC through Remote - SSH extensions in VS Code.
 
 * __Step B:__ Login to Storrs HPC from a MacOS computer by running the following in Terminal:
 ```
@@ -99,14 +103,14 @@ ssh -Y netid@hpc2.storrs.hpc.uconn.edu
 Follow the prompts to enter your password and complete any 2FA authentication. When successfully logged in you'll be assigned to a login node on HPC. 
 ```
 # check the node 
-# hostname should return your assigned login node e.g., login4
+# when logged in, hostname returns your assigned login node e.g., login4
 hostname
 ```
 
 ### Load Files
 FileZilla is a File Transfer Protocol (FTP) allowing files to be transferred between your computer and HPC over the internet. The Python script and the files it references need to be transferred to HPC. Note that since the transfer occurs over the internet, you need to be connected to the UConn network (see the Connect to a VPN section above). 
 
-To install and connect FileZilla to your HPC account, follow the steps from UConn Storrs HPC's [File Tranfer](https://kb.uconn.edu/space/SH/26033783688/File+Transfer) document, under the Data Storage Guide dropdown.
+To install FileZilla and connect it to your HPC account, following the steps from UConn Storrs HPC's [File Tranfer](https://kb.uconn.edu/space/SH/26033783688/File+Transfer) document, under the Data Storage Guide dropdown.
 
 Before uploading any data, please see [this link](https://kb.uconn.edu/space/SH/26033979893/FAQ#What-kind-of-data-can-be-stored-on-the-Storrs-HPC?) to the FAQs about what data can be stored on UConn Storrs HPC.
 
@@ -148,15 +152,22 @@ There are two ways to request resources from UConn Storrs HPC, an interactive jo
 
 ![alt text](readme_images/jobs.png)
 
-The job request is where to specify what HPC resources we'd like to use. If you have certain
-![alt text](readme_images/hpc_nodes_1.png)
-![alt text](readme_images/hpc_nodes_2.png)
+The job request is where to specify what resources we'd like to use on HPC. 
 
-Sites like [apx.com](https://apxml.com/posts/ultimate-system-requirements-llama-3-models) and [nodeshift.com](https://nodeshift.com/blog/how-to-install-llama-3-3-70b-instruct-locally) can be used to determine what resources to request from HPC when submitting the job request. Note: Llama 3.2 3B requires lighter hardware than Llama 3.3 70B.
+A program, SLURM, assigns resources on HPC as they become available. See the [SLURM Guide](https://kb.uconn.edu/space/SH/26032963685/SLURM+Guide) for more examples of how to request jobs on HPC.
 
-more information about the partitions [here](https://kb.uconn.edu/space/SH/26032963610/Partitions+%2F+Storrs+HPC+Resources#I.-Partitions-of-the-Storrs-HPC)
+If you have certain hardware requirements, you can request to be assigned to a node in a specific partition. For more information about the UConn Storrs HPC partitions and how to incorporate them into the job request, see [here](https://kb.uconn.edu/space/SH/26032963610/Partitions+%2F+Storrs+HPC+Resources#I.-Partitions-of-the-Storrs-HPC)  
+<br/><br/>
+<p align="center">
+<img src="readme_images/hpc_nodes_1.png" height="500">
+</p>
+<p align="center">
+<img src="readme_images/hpc_nodes_2.png" height="500">
+</p>
 
-See the [SLURM Guide](https://kb.uconn.edu/space/SH/26032963685/SLURM+Guide) for more examples of how to request jobs on HPC.
+To estimate the baseline requirements for the initial request, I used sites [apx.com](https://apxml.com/posts/ultimate-system-requirements-llama-3-models) and [nodeshift.com](https://nodeshift.com/blog/how-to-install-llama-3-3-70b-instruct-locally). 
+
+The output from the classify_with_ollama.py script estimates the runtime, CPU, and RAM of model requests within the script. This is included so various model sizes or features of the model like how complex the task is or number tokens in the output, can be used to test and refine the requirements needed for future job requests.
 
 * __Step E:__ Start an interactive job by running the following in Terminal:
 ```
@@ -166,21 +177,23 @@ See the [SLURM Guide](https://kb.uconn.edu/space/SH/26032963685/SLURM+Guide) for
 # --mem = ram (16 GB)
 # --pty = scripting language (bash)
 srun -n 1 -t 0:30:00 --mem=16G --pty bash
-
-# check what node you are on:
+```
+```
+# returns a node id when assigned resources
 hostname
 ```
 ### Load Software
 Some software (aka modules) like Python and Apptainer are available to use on UConn Storrs HPC. Run the following to see what software are available:
 ```
 # list modules
-module avail
-
+module 
+```
+```
 # check which versions of python are available
 module avail python
 ```
 
-One option for using software not available as a module is with a container. The next section will discuss containers. In this section, we will load the necessary software which includes Python for running the script classify_with_ollama.py script and Apptainer for running the Ollama application. 
+One option for using software not available as a module is with a container. The next section will discuss containers. For now, we will load the necessary modules including Python for running the script classify_with_ollama.py script and Apptainer for running the Ollama application. 
 
 UConn Storrs HPC uses Apptainer 1.1.3 which has a dependency (gcc) incompatible with the Python version loaded by default. So we will first unload conflicting modules and then load Apptainer and a compatible version of Python.
 
@@ -194,11 +207,11 @@ module load apptainer
 module load python/3.12.2
 ```
 ### Build a Container 
-A container is an isolated environment to run an application. Within the container is anything necessary e.g., files, packages, etc. run the application. A container is built from an image, which contains the instructions for how to build the envrionment. The image can be thought of as a blueprint or manifest for building a container. 
+A container is an isolated environment to run an application. Within the container is anything necessary e.g., files, packages, etc. run the application. A container is built from an image, which contains the instructions for how to build the envrionment. The image can be thought of as an instructional manual for building a container. 
 
-Images can be manually built, but Docker, a containerization service, contains a library of prebuilt images. Apptainer, the container system used by UConn Storrs HPC, is compatible with Docker, so with Apptainer we can pull images from the Docker library to build containers. To run Ollama on UConn Storrs HPC, we will the Ollama image from the Docker library to build a container.
+Images can be manually built, but Docker, a containerization service, contains a library of prebuilt images. Apptainer, the container module used by UConn Storrs HPC, is compatible with Docker, so with Apptainer we can pull images from the Docker library to build containers. To run Ollama on UConn Storrs HPC, we will the Ollama image from the Docker library to build a container.
 
-![alt text](readme_images/containers.png)
+![alt text](readme_images/containers.png) 
 
 * __Step G:__ Build the Ollama container by running the following in Terminal:
 ```
@@ -212,12 +225,12 @@ Images can be manually built, but Docker, a containerization service, contains a
 # docker://ollama/ollama:latest = path to the docker image to use
 apptainer build --force --docker-login --sandbox ollama/ docker://ollama/ollama:latest
 ```
-Login to your Docker account to connect the image to your account. This allows you to use Docker Hub track running containers connected to that image.
+Login to your Docker account to connect the image to your account. This allows you to use Docker Hub to track running containers connected to that image. I you don't have a Docker account, press enter when asked for your Docker Username and Password or remove --docker-login from the command.
 
 ### Start the Container
 Once the container is built, the container needs to be "turned on." Starting the container as an instance (instance start vs apptainer run) runs the container in the background. After the container is started, we shell into it and start the Ollama application. 
 
-Instance start is analagous to turning on the computer and ollama serve to opening the Ollama app.
+I like to think of instance start as analagous to turning on a computer and ollama serve to opening the Ollama app.
 
 * __Step H:__ Start the instance by running the following in Terminal:
 ```
@@ -228,9 +241,8 @@ Instance start is analagous to turning on the computer and ollama serve to openi
 apptainer instance start ollama/ ollama_instance
 ```
 ### Run Ollama
-To open the Ollama application in the container use ollama serve. 
-
-![alt text](readme_images/nesting.png)
+Shell into the container. 
+![alt text](readme_images/hpc_to_container.png)
 
 * __Step I:__ Shell into the instance and run Ollama by running the following in Terminal:
 ```
@@ -238,7 +250,8 @@ To open the Ollama application in the container use ollama serve.
 # shell = enter the container
 # instance://ollama_instance = name of the instance to shell into
 apptainer shell instance://ollama_instance
-
+```
+```
 # ollama = application
 # serve = start ollama
 ollama serve
@@ -284,19 +297,27 @@ module load python/3.12.2
 Llama 3.2 3B
 Now, enter the container where Ollama is running and download the Llama model that will be used in the Python script i.e., classify_with_ollama.py. To try the demo with another model it needs to be changed in the script and then downloaded into the container. Note that Ollama needs to be running in order to download any models.
 
+
 * __Step M:__ Load models by running the following in Terminal:
 ```
 # apptainer = application
 # shell = enter the container
 # instance://ollama_instance = name of the instance to shell into
 apptainer shell instance://ollama_instance
+```
 
+```
 # list the models that are downloaded in the container
 ollama list
-
+```
+```
 # pull the Llama 3.2 model (by default this pulls the 3B parameter model by default)
 ollama pull llama3.2 # pull a new model
+```
 
+the following error has been reported when pulling models from Apptainer containers built
+"Error: pull model manifest: Get "https://registry.ollama.ai/v2/library/1lama3.2/manifests/latest*: dial top: look up registry.ollama.ai on [::1]:53: read up [ 11 3428-7 12 105, read. connection refused"
+```
 # exit out of the container
 # i.e., go back to the hpc environment
 exit
