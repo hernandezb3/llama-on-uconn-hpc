@@ -37,8 +37,15 @@ for case in df["review_text"]:
     prompt_case = prompts["goodreads"] + " " + case
     input = [{"role": "user", "content": prompt_case}]
     response = llm.invoke(input)
-    llama_output.append(response)
     print(response)
+    if response.isdigit() is False:
+        numbers = []
+        for character in response:
+            if character.isdigit() is True:
+                number = int(character)
+                number = numbers.append(number)
+        response = numbers[0]
+    llama_output.append(response)
 df["llama_rating"] = llama_output
 rmse.append(fit.get_rmse(df["rating"], df["llama_rating"]))
 
