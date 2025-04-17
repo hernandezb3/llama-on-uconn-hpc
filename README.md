@@ -161,7 +161,7 @@ ls
 There are two ways to request resources from UConn Storrs HPC, an interactive job (srun) or a scheduled job (sbatch). The demo requests an interactive job, so we can drop-in to HPC to send inputs and recieve outputs from HPC in real time. For more information about job types, see Step 5 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
 
 <p align="center">
-<img src="readme_images/jobs.png" height="100">
+<img src="readme_images/jobs.png" height="200">
 </p>
 
 The job request is where to specify what resources we'd like to use on HPC. You can also request to be assigned to a node in a specific partition. For more information about the UConn Storrs HPC partitions and how to incorporate them into the job request, see [here](https://kb.uconn.edu/space/SH/26032963610/Partitions+%2F+Storrs+HPC+Resources#I.-Partitions-of-the-Storrs-HPC)  
@@ -170,7 +170,7 @@ The job request is where to specify what resources we'd like to use on HPC. You 
 <img src="readme_images/hpc_nodes_1.png" height="150">
 </p>
 <p align="center">
-<img src="readme_images/hpc_nodes_2.png" height="200">
+<img src="readme_images/hpc_nodes_2.png" height="190">
 </p>
 
 A program, SLURM, assigns resources on HPC as they become available. See the [SLURM Guide](https://kb.uconn.edu/space/SH/26032963685/SLURM+Guide) for more examples of how to request jobs on HPC.
