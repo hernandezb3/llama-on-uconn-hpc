@@ -253,7 +253,9 @@ apptainer instance start ollama/ ollama_instance
 ```
 ### Run Ollama
 Shell into the container to run commands within the container.
-![alt text](readme_images/hpc_to_container.png)
+<p align="center">
+<img src="readme_images/hpc_to_container.png" height="300">
+</p>
 
 * __Step I:__ Shell into the instance and run Ollama by running the following in Terminal:
 ```
@@ -367,7 +369,9 @@ scratch to shared
 Running the exit 
 
 * __Step Q:__ Logout of all terminal windows by running the following in Terminal:
-
+<p align="center">
+<img src="readme_images/exit.png" height="300">
+</p>
 
 ```
 exit
