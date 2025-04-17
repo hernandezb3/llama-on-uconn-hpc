@@ -88,7 +88,7 @@ Displaying program graphics, like rendering a plot, requires an X11 Window Syste
 Login to HPC uses a Secure Shell (SSH) protocol, a method for secure remote login between your computer and HPC. This lets us to communicate with HPC i.e., send inputs and recieve outputs.
 
 <p align="center">
-<img src="readme_images/local_to_hpc.png" height="500">
+<img src="readme_images/local_to_hpc.png" height="400">
 </p>
 
 MacOS and Linux OS users can login to HPC using the default Terminal application without installing anything. Windows OS does not automatically have a Unix Shell program installed and [MobaXterm](https://mobaxterm.mobatek.net) is recommended by Storrs HPC Admins and this application jointly acts as an X11 Window System and SSH protocol. For more information about logging into HPC, see Step 3 in UConn Storrs HPC's [Getting Started](https://kb.uconn.edu/space/SH/26694811668/Getting+Started) guide. 
