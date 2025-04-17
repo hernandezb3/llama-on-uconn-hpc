@@ -119,19 +119,19 @@ Before uploading any data, please see [this link](https://kb.uconn.edu/space/SH/
 * __Step C:__ Open FileZilla and click the Site Manager icon to connect to HPC
 
 * __Step D:__ (Option 1) Transfer these folders and files to your HPC account: 
-    - classify_with_ollama.py
-    - test_ollama.py
-    - requirements.txt
-    - library
-        - dictionary.py
-        - fit.py
-        - secrets.py
-        - start.py
-    - data
-        - demo_data
-            - goodreads_20.csv
-    - output
-        - demo_output
+   |-- classify_with_ollama.py
+    |-- test_ollama.py
+    |-- requirements.txt
+    |-- library
+        |-- dictionary.py
+        |-- fit.py
+        |-- secrets.py
+        |-- start.py
+    |-- data
+        |-- demo_data
+            |-- goodreads_20.csv
+    |-- output
+        |-- demo_output
 
 If you saved these files within a directory, change your working directory to where classify_with_ollama.py is saved:
 ```
