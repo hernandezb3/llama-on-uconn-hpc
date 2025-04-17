@@ -221,7 +221,7 @@ Images can be manually built, but Docker, a containerization service, contains a
 
 </p>
 <p align="center">
-<img src="readme_images/containers.png" height="300">
+<img src="readme_images/containers.png" height="200">
 </p>
 
 * __Step G:__ Build the Ollama container by running the following in Terminal:
