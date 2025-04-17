@@ -8,7 +8,7 @@ from datetime import datetime
 import psutil
 import pandas as pd
 from langchain_ollama import OllamaLLM
-from library import start, dictionary, fit # take out oamm. to run whole file
+from library import start, dictionary, fit
 
 checkpoint0 = datetime.now() # start runtime counter
 
@@ -34,7 +34,7 @@ df = pd.read_csv(start.DATA)
 rmse = []
 llama_output = [] # initialize list
 for case in df["review_text"]:
-    prompt_case = prompts["goodreads"] + " " + case
+    prompt_case = prompts + " " + case
     input = [{"role": "user", "content": prompt_case}]
     response = llm.invoke(input)
     print(response)
