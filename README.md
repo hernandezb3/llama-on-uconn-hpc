@@ -372,7 +372,7 @@ Output files can be directly downloaded from HPC to your local computer using Fi
 Finally, exit from all containers and HPC entirely. To stop running Ollama, click into the terminal window and use CTRL + C to cancel and then exit out of both the container and the interactive job. You'll know you're logged out when running hostname on both terminal windows return a login node.
 
 <p align="center">
-<img src="readme_images/exit.png" height="400">
+<img src="readme_images/exit.png" height="300">
 </p>
 
 * __Step Q:__ Logout of BOTH terminal windows by running the following in Terminal:
