@@ -323,7 +323,7 @@ ollama list
 ```
 ```
 # pull the Llama 3.2 model (by default this pulls the 3B parameter model by default)
-ollama pull llama3.2 # pull a new model
+ollama pull llama3.2
 ```
 ```
 # exit out of the container
@@ -332,6 +332,7 @@ exit
 ```
 
 The following error has been reported when pulling models from Apptainer containers built while connected to UConn Storrs HPC through Remote - SSH extensions in VS Code:
+
 "Error: pull model manifest: Get "https://registry.ollama.ai/v2/library/1lama3.2/manifests/latest*: dial top: look up registry.ollama.ai on [::1]:53: read up [ 11 3428-7 12 105, read. connection refused"
 
 ### Install Python Packages
@@ -352,7 +353,9 @@ python3 classify_with_ollama.py
 ```
 
 ### Save the Output
-The script creates two files, df and output. The file that starts with df contains a dataframe of the data which contains a column for the RMSE for each case. The file that starts with output contains information about the resources used to create the model. For example, in it is a calculation for how much RAM was used when prompting the model. This information can be used to compare the resources used between different sized models and different sets of data.
+The script creates two files, df and output: 
+- df: contains a dataframe of the data with a added columns for the llama_rating each case
+- output: contains the rmse and computing resources used in the model request, e.g., RAM, CPU. This information can be used to compare the resources used for different sized models and different sets of data
 
 ```
 # = view the contents of a file
@@ -362,20 +365,20 @@ The script creates two files, df and output. The file that starts with df contai
 The files contained in all subfolders of output are ignored in .gitignore so they will not be pushed to GitHub. This structure allows us to standardize a path for where to save output files while protecting actual data from being pushed out publicly. 
 
 * __Step P:__ Save the output files
-FileZilla
-scratch to shared
+Output files can be directly downloaded from HPC to your local computer using FileZilla. For additional file storage information see the Storrs HPC [Data Storage Guide](https://kb.uconn.edu/space/SH/26034012236/Data+Storage+Guide).
+
 
 ### Logout of HPC
-Running the exit 
+Finally, exit from all containers and HPC entirely. To stop running Ollama, click into the terminal window and use CTRL + C to cancel and then exit out of both the container and the interactive job. You'll know you're logged out when running hostname on both terminal windows return a login node.
 
-* __Step Q:__ Logout of all terminal windows by running the following in Terminal:
 <p align="center">
-<img src="readme_images/exit.png" height="300">
+<img src="readme_images/exit.png" height="400">
 </p>
+
+* __Step Q:__ Logout of BOTH terminal windows by running the following in Terminal:
 
 ```
 exit
-# exit node?
 ```
 
 Check that you are on a login node:
@@ -385,4 +388,4 @@ hostname
 
 Comments, questions, or suggestions to this repo? See the [Discussion](https://github.com/hernandezb3/llama-on-uconn-hpc/discussions) forum
 
-README last updated: April 14, 2025
+README last updated: April 17, 2025
