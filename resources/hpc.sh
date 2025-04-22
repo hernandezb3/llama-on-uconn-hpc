@@ -31,9 +31,16 @@ cat # print the contents of a file
 df -k # check the storage of the partition
 
 # modules
+# check which modules are available
 module avail
 module avail apptainer # check which versions of apptainer are available
 module avail python # check which versions of python are available
+# unload a specific module
+module unload
+# unload all modules
+module purge
+# load a specific module
+module load
 
 # github
 git clone https://github.com/hernandezb3/llama-on-uconn-hpc.git # clone this repo
