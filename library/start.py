@@ -8,7 +8,7 @@ DATA_DIR = MAIN_DIR + "data/demo_data/" # hpc
 
 # data to use:
 # goodreads demo data 
-DATA = DATA_DIR + "goodreads_20.csv"
+DATA = DATA_DIR + "goodreads_sample.csv"
 
 # path to output model responses:
 OUTPUT_DIR = MAIN_DIR + "output/demo_output/" # hpc
