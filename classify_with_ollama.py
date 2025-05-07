@@ -14,8 +14,8 @@ checkpoint0 = datetime.now() # start runtime counter
 
 # ollama model ids
 #model_id = "llama3.3" # llama3.3 70B
-#model_id = "llama3.2" # llama3.2
-model_id = "llama3.2_1b" # llama3.2:1b
+#model_id = "llama3.2" # llama3.2 3B - default
+model_id = "llama3.2:1b" # llama3.2 1B
 model_name = dictionary.model_names[model_id]
 
 # initialize the model
