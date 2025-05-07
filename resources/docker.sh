@@ -11,7 +11,7 @@ docker pull ollama/ollama:latest # docker
 # -d = run container in background
 # -v = bind mount volume
 # -p = publish containers ports to the host
-docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama:latest
 
 # run download and run llama3.2 3B
 docker exec -it ollama ollama run llama3.2

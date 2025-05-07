@@ -14,13 +14,13 @@ checkpoint0 = datetime.now() # start runtime counter
 
 # ollama model ids
 #model_id = "llama3.3" # llama3.3 70B
-model_id = "llama3.2" # llama3.2
-#model_id = "llama3.2:1b" # llama3.2:1b
+#model_id = "llama3.2" # llama3.2
+model_id = "llama3.2_1b" # llama3.2:1b
 model_name = dictionary.model_names[model_id]
 
 # initialize the model
 ollama_server_url = "http://localhost:11434"
-llm = OllamaLLM(model = model_name, base_url = ollama_server_url)
+llm = OllamaLLM(model = model_id, base_url = ollama_server_url)
 
 checkpoint1 = datetime.now() # runtime counter
 

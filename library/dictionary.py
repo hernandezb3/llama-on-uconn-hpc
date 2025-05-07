@@ -5,7 +5,7 @@ model_names = {"meta-llama/Llama-3.3-70B-Instruct": "llama3.3",
                "meta-llama/Llama-3.1-8B": "llama3.1",
                "llama3.3": "llama3.3",
                "llama3.2": "llama3.2",
-               "llama3.2_1b": "llama3.2_1b",
+               "llama3.2:1b": "llama3.2_1b",
                "llama3.1": "llama3.1"}
 
 demo_prompts = {"hello": "Hello, how are you?",
