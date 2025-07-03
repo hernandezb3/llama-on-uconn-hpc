@@ -1,15 +1,18 @@
-# python packages
+# general packages
 numpy
 pandas
 ipykernel
 
-# llama
+# llama 
+# run model
 langchain_ollama
-huggingface_hub
-transformers
 torch
 torchvision
 openpyxl
+# finetune
+huggingface_hub
+transformers
+evaluate
 
 # metadata
 datetime
